@@ -1,0 +1,25 @@
+<div class="scrollable-area">
+  <button class="addContact" ng-click="addContact()">Add Contact</button>
+  <table ng-table="tableParams" show-filter="true" class="table">
+    <tr ng-repeat="contact in data">
+      <td data-title="'name'" sortable="'name'" filter="{ 'name': 'text' }">
+        {{contact.name}}
+      </td>
+      <td data-title="'Stand Out'" sortable="'stand-out'">
+        {{contact.standout}}
+      </td>
+      <td data-title="'Start Convo'" sortable="'convo-init'">
+        {{contact.convoinit}}
+      </td>
+      <td data-title="'Invite'" sortable="'invite'">
+        {{contact.invite}}
+      </td>
+      <td data-title="'Challenger'" sortable="'challenger'">
+        {{contact.challenger}}
+      </td>
+      <td data-title="'Never Contact'" sortable="'never-contact'">
+        {{contact.nevercontact}}
+      </td>
+    </tr>
+  </table>
+</div>

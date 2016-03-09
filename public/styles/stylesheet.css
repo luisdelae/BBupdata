@@ -1,0 +1,38 @@
+.headerContainer {
+  background-color: gray;
+}
+
+h1 {
+  text-align: center;
+}
+
+.userNav {
+  text-align: right;
+}
+
+ul {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+  display: inline;
+  margin: .3em;
+}
+
+.scrollable-area {
+  margin: auto;
+  width: 80%;
+  height: 35em;
+  border: .5em solid #ccc;
+  overflow-y: scroll; /* <-- here is what is important*/
+  overflow-x: scroll;
+}
+
+.addContact {
+  margin: 1em;
+}
+
+.table {
+  margin: 1em;
+}
