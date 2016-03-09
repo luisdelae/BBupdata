@@ -12,11 +12,11 @@ mongoose.model(
   'Contact',
   new Schema({
     "name": String,
-    "stand-out": Boolean,
-    "convo-init": Boolean,
+    "standout": Boolean,
+    "convoinit": Boolean,
     "invite": Boolean,
     "challenger": Boolean,
-    "never-contact": Boolean,
+    "nevercontact": Boolean,
     "occupation": String,
     "family": String,
     "goals": String,
@@ -40,7 +40,34 @@ app.get('/contactlist', function(req, res) {
       console.log('ERROR:', err);
     }
     res.send(data);
-  }).sort('name');
+  });
+});
+
+app.post('/savecontact', function(req, res) {
+  var addContact = new Contact({
+    "name": req.body.name,
+    "standout": req.body.standout,
+    "convoinit": req.body.convoinit,
+    "invite": req.body.invite,
+    "challenger": req.body.challenger,
+    "nevercontact": req.body.nevercontact
+  });
+
+  //post new contact
+  addContact.save(function(err, data) {
+    if(err) {
+      console.log('ERROR:', err);
+    }
+
+    Contact.find({}, function(err, data) {
+      if(err) {
+        console.log('ERROR:', err);
+      }
+
+      res.send(data);
+
+    });
+  });
 });
 
 app.use(express.static('public'));
