@@ -16,8 +16,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'CalendarController'
     })
     .when('/contactinfo', {
-      templateUrl: '/views/templates/contactinfo',
-      // controller: 'ContactInfoController'
+      templateUrl: '/views/templates/contactinfo.html',
+      controller: 'ContactInfoController'
     })
     .otherwise({
       redirectTo: 'contactslist'

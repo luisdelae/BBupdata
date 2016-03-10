@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost/bbupdata');
 mongoose.model(
   'Contact',
   new Schema({
+    "dateadded": {type: Date, default: Date.now},
     "name": String,
     "standout": Boolean,
     "convoinit": Boolean,
@@ -40,10 +41,10 @@ app.get('/contactlist', function(req, res) {
       console.log('ERROR:', err);
     }
     res.send(data);
-  });
+  }).sort('-dateadded');
 });
 
-app.post('/savecontact', function(req, res) {
+app.post('/contactlist', function(req, res) {
   var addContact = new Contact({
     "name": req.body.name,
     "standout": req.body.standout,

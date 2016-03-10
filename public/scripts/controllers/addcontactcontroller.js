@@ -1,6 +1,10 @@
 myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
-'$mdDialog', '$mdMedia', function($scope, $http,
-  ContactFactory, $mdDialog, $mdMedia) {
+'$mdDialog', '$mdMedia', function($scope, $http, ContactFactory, $mdDialog, $mdMedia) {
+
+  $scope.contactFactory = ContactFactory;
+  $scope.status = '  ';
+  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+  $scope.contacts = [];
 
   $scope.saveContact = function() {
 
@@ -17,8 +21,10 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
     //add it to db
     //refresh the table
 
-    $http.post('/savecontact', contact).then(function(response) {
-      console.log('from post:: ', response);
+    $scope.contactFactory.factorySaveContact(contact).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+      });
     });
 
     $scope.name = '';
