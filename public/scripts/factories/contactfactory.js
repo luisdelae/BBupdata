@@ -52,8 +52,61 @@ function($http, $mdDialog, $mdMedia) {
   };
 
   var standoutTrue = function(id) {
-    console.log('id from standouttrue: ', id);
-    var promise = $http.put('/contactlisticon/' + id).then(function(response) {
+    var promise = $http.put('/contactliststandouttrue/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var standoutFalse = function(id) {
+    var promise = $http.put('/contactliststandoutfalse/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var convoinitTrue = function(id) {
+    var promise = $http.put('/contactlistconvoinittrue/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var convoinitFalse = function(id) {
+    var promise = $http.put('/contactlistconvoinitfalse/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var inviteTrue = function(id) {
+    var promise = $http.put('/contactlistinvitetrue/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var inviteFalse = function(id) {
+    var promise = $http.put('/contactlistinvitefalse/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var challengerTrue = function(id) {
+    var promise = $http.put('/contactlistchallengertrue/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var challengerFalse = function(id) {
+    var promise = $http.put('/contactlistchallengerfalse/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var nevercontactTrue = function(id) {
+    var promise = $http.put('/contactlistnevercontacttrue/' + id).then(function(response) {
+    });
+    return promise;
+  };
+
+  var nevercontactFalse = function(id) {
+    var promise = $http.put('/contactlistnevercontactfalse/' + id).then(function(response) {
     });
     return promise;
   };
@@ -86,6 +139,33 @@ function($http, $mdDialog, $mdMedia) {
     },
     factoryStandoutTrue: function(id) {
       return standoutTrue(id);
+    },
+    factoryStandoutFalse: function(id) {
+      return standoutFalse(id);
+    },
+    factoryConvoinitTrue: function(id) {
+      return convoinitTrue(id);
+    },
+    factoryConvoinitFalse: function(id) {
+      return convoinitFalse(id);
+    },
+    factoryInviteTrue: function(id) {
+      return inviteTrue(id);
+    },
+    factoryInviteFalse: function(id) {
+      return inviteFalse(id);
+    },
+    factoryChallengerTrue: function(id) {
+      return challengerTrue(id);
+    },
+    factoryChallengerFalse: function(id) {
+      return challengerFalse(id);
+    },
+    factoryNevercontactTrue: function(id) {
+      return nevercontactTrue(id);
+    },
+    factoryNevercontactFalse: function(id) {
+      return nevercontactFalse(id);
     }
   };
 

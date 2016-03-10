@@ -33,6 +33,5 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
     $scope.challenger = false;
     $scope.nevercontact = false;
     
-    $scope.tableParams.reload();
   };
 }]);

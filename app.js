@@ -126,15 +126,156 @@ app.put('/contactlist/:id', function(req, res) {
   );
 });
 
-app.put('/contactlisticon/:id', function(req, res) {
-  var editContact = {
-    "standout": true
-  };
+app.put('/contactliststandouttrue/:id', function(req, res) {
 
   Contact.findByIdAndUpdate(
     {_id: req.params.id},
     {
-      $set: {standout: editContact.standout}
+      $set: {standout: true}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactliststandoutfalse/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {standout: false}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistconvoinittrue/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {convoinit: true}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistconvoinitfalse/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {convoinit: false}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistinvitetrue/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {invite: true}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistinvitefalse/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {invite: false}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistchallengertrue/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {challenger: true}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistchallengerfalse/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {challenger: false}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistnevercontacttrue/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {nevercontact: true}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.put('/contactlistnevercontactfalse/:id', function(req, res) {
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {nevercontact: false}
     },
     function(err, data) {
       if (err) {

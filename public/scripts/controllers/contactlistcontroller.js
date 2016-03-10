@@ -27,8 +27,6 @@ myApp.controller('ContactListController', ['$scope', '$http', '$location', 'Cont
     $scope.contactFactory.factoryCallContactForm(ev);
   };
 
-  
-
   $scope.contactInfo = function(id) {
     console.log('Clicked contactInfo for: ', id);
     $scope.contactFactory.getContactId(id);
@@ -37,6 +35,96 @@ myApp.controller('ContactListController', ['$scope', '$http', '$location', 'Cont
 
   $scope.standoutTrue = function(id) {
     $scope.contactFactory.factoryStandoutTrue(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.standoutFalse = function(id) {
+    $scope.contactFactory.factoryStandoutFalse(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.convoinitTrue = function(id) {
+    $scope.contactFactory.factoryConvoinitTrue(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.convoinitFalse = function(id) {
+    $scope.contactFactory.factoryConvoinitFalse(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.inviteTrue = function(id) {
+    $scope.contactFactory.factoryInviteTrue(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.inviteFalse = function(id) {
+    $scope.contactFactory.factoryInviteFalse(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.challengerTrue = function(id) {
+    $scope.contactFactory.factoryChallengerTrue(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.challengerFalse = function(id) {
+    $scope.contactFactory.factoryChallengerFalse(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.nevercontactTrue = function(id) {
+    $scope.contactFactory.factoryNevercontactTrue(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
+  };
+
+  $scope.nevercontactFalse = function(id) {
+    $scope.contactFactory.factoryNevercontactFalse(id).then(function() {
       $scope.contactFactory.factoryGetContactList().then(function() {
         $scope.contacts = $scope.contactFactory.factoryContactList();
         console.log($scope.contacts);
