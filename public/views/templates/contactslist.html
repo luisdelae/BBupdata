@@ -3,7 +3,9 @@
   <table ng-table="tableParams" show-filter="true" class="table">
     <tr ng-repeat="contact in data">
       <td data-title="'name'" sortable="'name'" filter="{ 'name': 'text' }">
-        {{contact.name}}
+        <p class="contactHover" ng-click="contactInfo(contact._id)">
+          {{contact.name}}
+        </p>
       </td>
       <td data-title="'Stand Out'" sortable="'stand-out'">
         {{contact.standout}}

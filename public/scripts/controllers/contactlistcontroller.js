@@ -1,5 +1,5 @@
-myApp.controller('ContactListController', ['$scope', '$http', 'ContactFactory',
-'$filter', 'ngTableParams', function($scope, $http,
+myApp.controller('ContactListController', ['$scope', '$http', '$location', 'ContactFactory',
+'$filter', 'ngTableParams', function($scope, $http, $location,
   ContactFactory, $filter, ngTableParams) {
 
     console.log('Hello from ContactListController!');
@@ -25,6 +25,11 @@ myApp.controller('ContactListController', ['$scope', '$http', 'ContactFactory',
 
   $scope.addContact = function(ev) {
     $scope.contactFactory.factoryCallContactForm(ev);
+  };
+
+  $scope.contactInfo = function(id) {
+    console.log('Clicked contactInfo for: ', id);
+    $location.path('contactinfo');
   };
 
 }]);

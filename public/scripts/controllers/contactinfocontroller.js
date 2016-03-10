@@ -3,4 +3,5 @@ function($scope, $http, ContactFactory) {
 
   console.log("Hello from ContactInfoController");
 
+
 }]);
