@@ -8,19 +8,24 @@
         </p>
       </td>
       <td data-title="'Stand Out'" sortable="'stand-out'">
-        {{contact.standout}}
+        <img src="../images/statusicons/standoutfalse.png" ng-if="contact.standout == false || contact.standout == undefined" ng-click="standoutTrue(contact._id)"/>
+        <img src="../images/statusicons/standouttrue.png" ng-if="contact.standout == true" ng-click="standoutFalse(contact._id)"/>
       </td>
       <td data-title="'Start Convo'" sortable="'convo-init'">
-        {{contact.convoinit}}
+        <img src="../images/statusicons/convoinitfalse.png" ng-if="contact.convoinit == false || contact.convoinit == undefined" ng-click="convoinitTrue(contact._id)"/>
+        <img src="../images/statusicons/convoinittrue.png" ng-if="contact.convoinit == true" ng-click="convoinitFalse(contact._id)"/>
       </td>
       <td data-title="'Invite'" sortable="'invite'">
-        {{contact.invite}}
+        <img src="../images/statusicons/invitefalse.png" ng-if="contact.invite == false || contact.invite == undefined" ng-click="inviteTrue(contact._id)"/>
+        <img src="../images/statusicons/invitetrue.png" ng-if="contact.invite == true" ng-click="inviteFalse(contact._id)"/>
       </td>
       <td data-title="'Challenger'" sortable="'challenger'">
-        {{contact.challenger}}
+        <img src="../images/statusicons/challengerfalse.png" ng-if="contact.challenger == false || contact.challenger == undefined" ng-click="challengerTrue(contact._id)"/>
+        <img src="../images/statusicons/challengertrue.png" ng-if="contact.challenger == true" ng-click="challengerFalse(contact._id)"/>
       </td>
       <td data-title="'Never Contact'" sortable="'never-contact'">
-        {{contact.nevercontact}}
+        <img src="../images/statusicons/nevercontactfalse.png" ng-if="contact.nevercontact == false || contact.nevercontact == undefined" ng-click="nevercontactTrue(contact._id)"/>
+        <img src="../images/statusicons/nevercontacttrue.png" ng-if="contact.nevercontact == true" ng-click="nevercontactFalse(contact._id)"/>
       </td>
     </tr>
   </table>

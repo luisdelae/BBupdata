@@ -64,3 +64,8 @@ label {
 .contactHover:hover {
   cursor: crosshair;
 }
+
+td img {
+  height: 3em;
+  vertical-align: middle;
+}
