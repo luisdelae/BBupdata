@@ -51,7 +51,12 @@ app.post('/contactlist', function(req, res) {
     "convoinit": req.body.convoinit,
     "invite": req.body.invite,
     "challenger": req.body.challenger,
-    "nevercontact": req.body.nevercontact
+    "nevercontact": req.body.nevercontact,
+    "occupation": "",
+    "family": "",
+    "goals": "",
+    "struggles": "",
+    "notes": ""
   });
 
   //post new contact
@@ -69,6 +74,56 @@ app.post('/contactlist', function(req, res) {
 
     });
   });
+});
+
+app.get('/contactlist/:id', function(req, res) {
+  Contact.findById({"_id": req.params.id}, function(err, data) {
+    if (err) {
+      console.log('ERROR:', err);
+    }
+    res.send(data);
+  });
+});
+
+app.put('/contactlist/:id', function(req, res) {
+
+  var editContact = {
+    "name": req.body.name,
+    "standout": req.body.standout,
+    "convoinit": req.body.convoinit,
+    "invite": req.body.invite,
+    "challenger": req.body.challenger,
+    "nevercontact": req.body.nevercontact,
+    "occupation": req.body.occupation,
+    "family": req.body.family,
+    "goals": req.body.goals,
+    "struggles": req.body.struggles,
+    "notes": req.body.notes
+  };
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {name: editContact.name,
+      standout: editContact.standout,
+      convoinit: editContact.convoinit,
+      invite: editContact.invite,
+      challenger: editContact.challenger,
+      nevercontact: editContact.nevercontact,
+      occupation: editContact.occupation,
+      family: editContact.family,
+      goals: editContact.goals,
+      struggles: editContact.struggles,
+      notes: editContact.notes
+      }
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
 });
 
 app.use(express.static('public'));

@@ -54,6 +54,13 @@ label {
   text-align: right;
 }
 
+.moreinfo input {
+  width: 75%;
+}
+.moreinfo textarea {
+  width: 75%;
+}
+
 .contactHover:hover {
   cursor: crosshair;
 }

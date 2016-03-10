@@ -33,6 +33,21 @@ function($http, $mdDialog, $mdMedia) {
     });
   };
 
+  var getSelectedContact = function() {
+    console.log('id received by getSelectedContact: ', selectedContactId);
+    var promise = $http.get('/contactlist/' + selectedContactId).then(function(response){
+      selectedContactData = response.data;
+      console.log('selectedContactData: ', selectedContactData);
+
+    });
+    return promise;
+  };
+
+  var editContact = function(contact) {
+  $http.put('/contactlist/' + selectedContactId, contact).then(function(response) {
+  });
+};
+
   var publicFunctions = {
     factoryContactList: function() {
       return allContacts;
@@ -47,10 +62,14 @@ function($http, $mdDialog, $mdMedia) {
       return getSelectedContact();
     },
     factoryGetSelectedConactData: function() {
-      return SelectedContactData;
+      return selectedContactData;
+    },
+    getContactId: function(id){
+      selectedContactId = id;
+      return selectedContactId;
     },
     factoryEditContact: function(contact) {
-      return editPost(contact);
+      return editContact(contact);
     },
     factoryCallContactForm: function(ev) {
       callContactForm(ev);

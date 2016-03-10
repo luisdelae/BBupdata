@@ -29,6 +29,8 @@ myApp.controller('ContactListController', ['$scope', '$http', '$location', 'Cont
 
   $scope.contactInfo = function(id) {
     console.log('Clicked contactInfo for: ', id);
+    $scope.contactFactory.getContactId(id);
+    // $scope.contactFactory.factoryGetSelectedContact(id);
     $location.path('contactinfo');
   };
 
