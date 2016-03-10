@@ -27,11 +27,22 @@ myApp.controller('ContactListController', ['$scope', '$http', '$location', 'Cont
     $scope.contactFactory.factoryCallContactForm(ev);
   };
 
+  
+
   $scope.contactInfo = function(id) {
     console.log('Clicked contactInfo for: ', id);
     $scope.contactFactory.getContactId(id);
-    // $scope.contactFactory.factoryGetSelectedContact(id);
     $location.path('contactinfo');
+  };
+
+  $scope.standoutTrue = function(id) {
+    $scope.contactFactory.factoryStandoutTrue(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = $scope.contactFactory.factoryContactList();
+        console.log($scope.contacts);
+        $scope.tableParams.reload();
+      });
+    });
   };
 
 }]);

@@ -22,9 +22,8 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
     //refresh the table
 
     $scope.contactFactory.factorySaveContact(contact).then(function() {
-      $scope.contactFactory.factoryGetContactList().then(function() {
-        $scope.contacts = $scope.contactFactory.factoryContactList();
-      });
+      $scope.contacts = $scope.contactFactory.factoryContactList();
+      console.log($scope.contacts);
     });
 
     $scope.name = '';
@@ -33,6 +32,7 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
     $scope.invite = false;
     $scope.challenger = false;
     $scope.nevercontact = false;
-
+    
+    $scope.tableParams.reload();
   };
 }]);

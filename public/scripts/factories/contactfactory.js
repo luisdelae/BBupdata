@@ -5,17 +5,20 @@ function($http, $mdDialog, $mdMedia) {
   var selectedContactId;
   var selectedContactData;
 
-  var saveContact = function(contact) {
-    console.log('Entered saveContact()');
-     var promise = $http.post('/contactlist', contact).then(function(response) {
-    });
-    return promise;
-  };
-
   var getContactList = function() {
     console.log('Entered getContactList()');
     var promise = $http.get('/contactlist').then(function(response) {
       allContacts = response.data;
+    });
+    return promise;
+  };
+
+  var saveContact = function(contact) {
+    console.log('Entered saveContact()');
+    var promise = $http.post('/contactlist', contact).then(function(response) {
+    allContacts = response.data;
+
+    console.log(allContacts);
     });
     return promise;
   };
@@ -44,9 +47,16 @@ function($http, $mdDialog, $mdMedia) {
   };
 
   var editContact = function(contact) {
-  $http.put('/contactlist/' + selectedContactId, contact).then(function(response) {
-  });
-};
+    $http.put('/contactlist/' + selectedContactId, contact).then(function(response) {
+    });
+  };
+
+  var standoutTrue = function(id) {
+    console.log('id from standouttrue: ', id);
+    var promise = $http.put('/contactlisticon/' + id).then(function(response) {
+    });
+    return promise;
+  };
 
   var publicFunctions = {
     factoryContactList: function() {
@@ -73,6 +83,9 @@ function($http, $mdDialog, $mdMedia) {
     },
     factoryCallContactForm: function(ev) {
       callContactForm(ev);
+    },
+    factoryStandoutTrue: function(id) {
+      return standoutTrue(id);
     }
   };
 

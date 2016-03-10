@@ -126,6 +126,25 @@ app.put('/contactlist/:id', function(req, res) {
   );
 });
 
+app.put('/contactlisticon/:id', function(req, res) {
+  var editContact = {
+    "standout": true
+  };
+
+  Contact.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {standout: editContact.standout}
+    },
+    function(err, data) {
+      if (err) {
+        console.log('ERROR:', err);
+      }
+      res.send(data);
+    }
+  );
+});
+
 app.use(express.static('public'));
 app.use(express.static('public/views'));
 app.use(express.static('public/scripts'));
