@@ -2,24 +2,24 @@
   <div class="row">
     <button class="two columns">Remind</button>
     <div class="two columns">
-      <input  type="checkbox" name="standout" ng-model="standout" />
-      <p>Stand Out</p>
+      <img src="../images/statusicons/standoutfalse.png" ng-if="contact.standout == false || contact.standout == undefined" ng-click="standoutTrue(contact._id)"/>
+      <img src="../images/statusicons/standouttrue.png" ng-if="contact.standout == true" ng-click="standoutFalse(contact._id)"/>
     </div>
     <div class="two columns">
-      <input type="checkbox" name="convoinit" ng-model="convoinit" />
-      <p>Initiate Convo</p>
+      <img src="../images/statusicons/convoinitfalse.png" ng-if="contact.convoinit == false || contact.convoinit == undefined" ng-click="convoinitTrue(contact._id)"/>
+      <img src="../images/statusicons/convoinittrue.png" ng-if="contact.convoinit == true" ng-click="convoinitFalse(contact._id)"/>
     </div>
     <div class="two columns" >
-      <input type="checkbox" name="invite" ng-model="invite" />
-      <p>Invite</p>
+      <img src="../images/statusicons/invitefalse.png" ng-if="contact.invite == false || contact.invite == undefined" ng-click="inviteTrue(contact._id)"/>
+      <img src="../images/statusicons/invitetrue.png" ng-if="contact.invite == true" ng-click="inviteFalse(contact._id)"/>
     </div>
     <div  class="two columns">
-      <input type="checkbox" name="challenger" ng-model="challenger" />
-      <p>Challenger</p>
+      <img src="../images/statusicons/challengerfalse.png" ng-if="contact.challenger == false || contact.challenger == undefined" ng-click="challengerTrue(contact._id)"/>
+      <img src="../images/statusicons/challengertrue.png" ng-if="contact.challenger == true" ng-click="challengerFalse(contact._id)"/>
     </div>
     <div class="two columns">
-      <input type="checkbox" name="nevercontaxt" ng-model="nevercontact" />
-      <p>Never Contact</p>
+      <img src="../images/statusicons/nevercontactfalse.png" ng-if="contact.nevercontact == false || contact.nevercontact == undefined" ng-click="nevercontactTrue(contact._id)"/>
+      <img src="../images/statusicons/nevercontacttrue.png" ng-if="contact.nevercontact == true" ng-click="nevercontactFalse(contact._id)"/>
     </div>
   </div>
   <div class="row moreinfo">

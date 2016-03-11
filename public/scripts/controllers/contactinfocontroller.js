@@ -7,7 +7,7 @@ function($scope, $http, ContactFactory) {
   $scope.contact = {};
 
   $scope.contactFactory.factoryGetSelectedContact().then(function() {
-    $scope.contact = $scope.contactFactory.factoryGetSelectedConactData();
+    $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
     console.log($scope.contact);
     enterData();
   });
@@ -27,24 +27,103 @@ function($scope, $http, ContactFactory) {
   }
 
   $scope.editPost = function() {
-  var contact = {
-    standout: $scope.standout,
-    convoinit: $scope.convoinit,
-    invite: $scope.invite,
-    challenger: $scope.challenger,
-    nevercontact: $scope.nevercontact,
-    name: $scope.name,
-    occupation: $scope.occupation,
-    family: $scope.family,
-    goals: $scope.goals,
-    struggles: $scope.struggles,
-    notes: $scope.notes
+    var contact = {
+      standout: $scope.standout,
+      convoinit: $scope.convoinit,
+      invite: $scope.invite,
+      challenger: $scope.challenger,
+      nevercontact: $scope.nevercontact,
+      name: $scope.name,
+      occupation: $scope.occupation,
+      family: $scope.family,
+      goals: $scope.goals,
+      struggles: $scope.struggles,
+      notes: $scope.notes
+    };
+
+    $scope.contactFactory.factoryEditContact(contact);
+
+    alert('Contact has been updated');
   };
 
-  $scope.contactFactory.factoryEditContact(contact);
+  $scope.standoutTrue = function(id) {
+    $scope.contactFactory.factoryStandoutTrue(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
 
-  alert('Contact has been updated');
+  $scope.standoutFalse = function(id) {
+    $scope.contactFactory.factoryStandoutFalse(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
 
-};
+  $scope.convoinitTrue = function(id) {
+    $scope.contactFactory.factoryConvoinitTrue(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.convoinitFalse = function(id) {
+    $scope.contactFactory.factoryConvoinitFalse(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.inviteTrue = function(id) {
+    $scope.contactFactory.factoryInviteTrue(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.inviteFalse = function(id) {
+    $scope.contactFactory.factoryInviteFalse(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.challengerTrue = function(id) {
+    $scope.contactFactory.factoryChallengerTrue(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.challengerFalse = function(id) {
+    $scope.contactFactory.factoryChallengerFalse(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.nevercontactTrue = function(id) {
+    $scope.contactFactory.factoryNevercontactTrue(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.nevercontactFalse = function(id) {
+    $scope.contactFactory.factoryNevercontactFalse(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
 
 }]);

@@ -123,7 +123,7 @@ function($http, $mdDialog, $mdMedia) {
     factoryGetSelectedContact: function() {
       return getSelectedContact();
     },
-    factoryGetSelectedConactData: function() {
+    factoryGetSelectedContactData: function() {
       return selectedContactData;
     },
     getContactId: function(id){

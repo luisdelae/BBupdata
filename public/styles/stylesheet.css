@@ -65,7 +65,7 @@ label {
   cursor: crosshair;
 }
 
-td img {
+td img, .contactinfoclass img {
   height: 3em;
   vertical-align: middle;
 }
