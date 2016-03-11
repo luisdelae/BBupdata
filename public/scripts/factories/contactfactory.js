@@ -1,14 +1,14 @@
 myApp.factory('ContactFactory', ['$http','$mdDialog', '$mdMedia',
 function($http, $mdDialog, $mdMedia) {
 
-  var allContacts;
+  var allContacts = {};
   var selectedContactId;
   var selectedContactData;
 
   var getContactList = function() {
     console.log('Entered getContactList()');
     var promise = $http.get('/contactlist').then(function(response) {
-      allContacts = response.data;
+      allContacts.list = response.data;
     });
     return promise;
   };
@@ -16,9 +16,8 @@ function($http, $mdDialog, $mdMedia) {
   var saveContact = function(contact) {
     console.log('Entered saveContact()');
     var promise = $http.post('/contactlist', contact).then(function(response) {
-    allContacts = response.data;
-
-    console.log(allContacts);
+      allContacts.list = response.data;
+      console.log('from saveContact:', allContacts.list);
     });
     return promise;
   };
@@ -113,7 +112,7 @@ function($http, $mdDialog, $mdMedia) {
 
   var publicFunctions = {
     factoryContactList: function() {
-      return allContacts;
+      return allContacts.list;
     },
     factorySaveContact: function(contact) {
       return saveContact(contact);
@@ -166,7 +165,8 @@ function($http, $mdDialog, $mdMedia) {
     },
     factoryNevercontactFalse: function(id) {
       return nevercontactFalse(id);
-    }
+    },
+    allContacts: allContacts
   };
 
   return publicFunctions;

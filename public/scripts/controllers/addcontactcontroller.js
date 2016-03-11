@@ -4,7 +4,7 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
   $scope.contactFactory = ContactFactory;
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-  $scope.contacts = [];
+  $scope.contacts = ContactFactory.allContacts.list;
 
   $scope.saveContact = function() {
 
@@ -16,10 +16,7 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
       challenger: $scope.challenger,
       nevercontact: $scope.nevercontact
     };
-    console.log(contact);
-
-    //add it to db
-    //refresh the table
+    console.log('saveContact before actually saving', $scope.contacts);
 
     $scope.contactFactory.factorySaveContact(contact).then(function() {
       $scope.contacts = $scope.contactFactory.factoryContactList();
@@ -32,6 +29,6 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
     $scope.invite = false;
     $scope.challenger = false;
     $scope.nevercontact = false;
-    
+
   };
 }]);
