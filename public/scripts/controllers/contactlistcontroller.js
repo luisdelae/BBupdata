@@ -9,8 +9,8 @@ myApp.controller('ContactListController', ['$scope', '$http', '$location', 'Cont
   // $scope.contacts = ContactFactory.allContacts.list;
 
   $scope.contactFactory.factoryGetContactList().then(function() {
-    // $scope.contacts = $scope.contactFactory.factoryContactList();
-    $scope.contacts = ContactFactory.allContacts.list;
+    $scope.contacts = $scope.contactFactory.factoryContactList();
+    // $scope.contacts = ContactFactory.allContacts.list;
     console.log('from ContactListController: ', $scope.contacts);
 
     $scope.tableParams = new ngTableParams({

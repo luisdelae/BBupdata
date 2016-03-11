@@ -28,11 +28,6 @@ function($scope, $http, ContactFactory) {
 
   $scope.editPost = function() {
     var contact = {
-      standout: $scope.standout,
-      convoinit: $scope.convoinit,
-      invite: $scope.invite,
-      challenger: $scope.challenger,
-      nevercontact: $scope.nevercontact,
       name: $scope.name,
       occupation: $scope.occupation,
       family: $scope.family,

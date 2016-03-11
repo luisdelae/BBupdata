@@ -89,11 +89,6 @@ app.put('/contactlist/:id', function(req, res) {
 
   var editContact = {
     "name": req.body.name,
-    "standout": req.body.standout,
-    "convoinit": req.body.convoinit,
-    "invite": req.body.invite,
-    "challenger": req.body.challenger,
-    "nevercontact": req.body.nevercontact,
     "occupation": req.body.occupation,
     "family": req.body.family,
     "goals": req.body.goals,
@@ -105,11 +100,6 @@ app.put('/contactlist/:id', function(req, res) {
     {_id: req.params.id},
     {
       $set: {name: editContact.name,
-      standout: editContact.standout,
-      convoinit: editContact.convoinit,
-      invite: editContact.invite,
-      challenger: editContact.challenger,
-      nevercontact: editContact.nevercontact,
       occupation: editContact.occupation,
       family: editContact.family,
       goals: editContact.goals,
