@@ -6,7 +6,6 @@ function($http, $mdDialog, $mdMedia) {
   var selectedContactData;
 
   var getContactList = function() {
-    console.log('Entered getContactList()');
     var promise = $http.get('/contactlist').then(function(response) {
       allContacts.list = response.data;
     });
@@ -14,17 +13,14 @@ function($http, $mdDialog, $mdMedia) {
   };
 
   var saveContact = function(contact) {
-    console.log('Entered saveContact()');
     var promise = $http.post('/contactlist', contact).then(function(response) {
       allContacts.list = response.data;
-      console.log('from saveContact:', allContacts.list);
     });
     return promise;
   };
 
   var callContactForm = function(ev) {
-    console.log('clicked addContact button');
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) || false;
 
     $mdDialog.show({
       templateUrl: '../views/templates/addcontact.html',
@@ -36,11 +32,8 @@ function($http, $mdDialog, $mdMedia) {
   };
 
   var getSelectedContact = function() {
-    console.log('id received by getSelectedContact: ', selectedContactId);
     var promise = $http.get('/contactlist/' + selectedContactId).then(function(response){
       selectedContactData = response.data;
-      console.log('selectedContactData: ', selectedContactData);
-
     });
     return promise;
   };

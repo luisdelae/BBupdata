@@ -1,5 +1,6 @@
 <div class="scrollable-area">
   <button class="addContact" ng-click="addContact($event)">Add Contact</button>
+  <!-- {{data}} -->
   <table ng-table="tableParams" show-filter="true" class="table">
     <tr ng-repeat="contact in data">
       <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">
