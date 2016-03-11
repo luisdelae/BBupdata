@@ -8,7 +8,6 @@ function($scope, $http, ContactFactory) {
 
   $scope.contactFactory.factoryGetSelectedContact().then(function() {
     $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
-    console.log($scope.contact);
     enterData();
   });
 

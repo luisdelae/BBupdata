@@ -1,46 +1,19 @@
-myApp.controller('ContactListController', ['$scope', '$http', '$location', 'ContactFactory',
-'$filter', 'ngTableParams', function($scope, $http, $location,
-  ContactFactory, $filter, ngTableParams) {
+myApp.controller('ContactListController', ['$scope', '$http', '$location', '$filter', 'ContactFactory',
+function($scope, $http, $location, filter, ContactFactory) {
 
-  var vm = this;
   $scope.contactFactory = ContactFactory;
   $scope.contacts = [];
-  $scope.contacts = ContactFactory.allContacts;
+  $scope.displayedCollection = $scope.contacts.list;
 
   $scope.contactFactory.factoryGetContactList().then(function() {
-    // $scope.contacts = $scope.contactFactory.factoryContactList();
     $scope.contacts = ContactFactory.allContacts;
-
-    $scope.tableParams = new ngTableParams({
-      // page: 1,
-      count: $scope.contacts.list.length
-    },{
-      counts: [],
-      total: 1,
-      getData: function($defer, params) {
-        $scope.data = params.sorting() ? $filter('orderBy')($scope.contacts.list, params.orderBy()) : $scope.contacts.list;
-        $scope.data = params.filter() ? $filter('filter')($scope.data, params.filter()) : $scope.data;
-        $defer.resolve($scope.data);
-      }
-    });
   });
-
-  $scope.$watch(
-    "vm.$scope.contacts",
-    function handleFooChange( newValue, oldValue ) {
-      console.log( "$scope.contacts OLD", oldValue );
-      console.log( "$scope.contacts NEW", newValue );
-      $scope.data = false ? $filter('orderBy')(newValue.list, params.orderBy()) : newValue.list;
-      $scope.data = false ? $filter('filter')($scope.data, params.filter()) : $scope.data;
-    }
-  );
 
   $scope.addContact = function(ev) {
     ContactFactory.factoryCallContactForm(ev);
   };
 
   $scope.contactInfo = function(id) {
-    console.log('Clicked contactInfo for: ', id);
     $scope.contactFactory.getContactId(id);
     $location.path('contactinfo');
   };

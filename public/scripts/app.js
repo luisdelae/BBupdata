@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngTable', 'ngMaterial', 'ngMessages']);
+var myApp = angular.module('myApp', ['ngRoute', 'smart-table', 'ngMaterial', 'ngMessages']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
 

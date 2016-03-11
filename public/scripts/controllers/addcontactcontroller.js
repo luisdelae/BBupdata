@@ -4,7 +4,18 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
   $scope.contactFactory = ContactFactory;
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-  $scope.contacts = ContactFactory.allContacts.list;
+  $scope.contacts = ContactFactory.allContacts;
+
+  var clearForm = function() {
+    $scope.name = '';
+    $scope.standout = false;
+    $scope.convoinit = false;
+    $scope.invite = false;
+    $scope.challenger = false;
+    $scope.nevercontact = false;
+  };
+
+  clearForm();
 
   $scope.saveContact = function() {
 
@@ -16,19 +27,12 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
       challenger: $scope.challenger,
       nevercontact: $scope.nevercontact
     };
-    console.log('saveContact before actually saving', $scope.contacts);
 
     $scope.contactFactory.factorySaveContact(contact).then(function() {
       $scope.contacts = $scope.contactFactory.factoryContactList();
-      console.log($scope.contacts);
     });
 
-    $scope.name = '';
-    $scope.standout = false;
-    $scope.convoinit = false;
-    $scope.invite = false;
-    $scope.challenger = false;
-    $scope.nevercontact = false;
+    clearForm();
 
   };
 }]);

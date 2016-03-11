@@ -20,15 +20,6 @@ li {
   margin: .3em;
 }
 
-.scrollable-area {
-  margin: auto;
-  width: 80%;
-  height: 35em;
-  border: .5em solid #ccc;
-  overflow-y: scroll; /* <-- here is what is important*/
-  overflow-x: scroll;
-}
-
 .addContact {
   margin: 1em;
 }
@@ -69,4 +60,12 @@ label {
 td img, .contactinfoclass img {
   height: 3em;
   vertical-align: middle;
+}
+
+.dateDisplay {
+  display: none;
+}
+
+th {
+  font-weight: bold;
 }

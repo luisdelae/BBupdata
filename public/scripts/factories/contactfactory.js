@@ -20,7 +20,7 @@ function($http, $mdDialog, $mdMedia) {
   };
 
   var callContactForm = function(ev) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) || false;
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
 
     $mdDialog.show({
       templateUrl: '../views/templates/addcontact.html',
@@ -34,6 +34,7 @@ function($http, $mdDialog, $mdMedia) {
   var getSelectedContact = function() {
     var promise = $http.get('/contactlist/' + selectedContactId).then(function(response){
       selectedContactData = response.data;
+
     });
     return promise;
   };
