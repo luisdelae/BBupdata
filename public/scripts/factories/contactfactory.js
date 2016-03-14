@@ -45,61 +45,61 @@ function($http, $mdDialog, $mdMedia) {
   };
 
   var standoutTrue = function(id) {
-    var promise = $http.put('/contactliststandouttrue/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/standouttrue/' + id).then(function(response) {
     });
     return promise;
   };
 
   var standoutFalse = function(id) {
-    var promise = $http.put('/contactliststandoutfalse/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/standoutfalse/' + id).then(function(response) {
     });
     return promise;
   };
 
   var convoinitTrue = function(id) {
-    var promise = $http.put('/contactlistconvoinittrue/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/convoinittrue/' + id).then(function(response) {
     });
     return promise;
   };
 
   var convoinitFalse = function(id) {
-    var promise = $http.put('/contactlistconvoinitfalse/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/convoinitfalse/' + id).then(function(response) {
     });
     return promise;
   };
 
   var inviteTrue = function(id) {
-    var promise = $http.put('/contactlistinvitetrue/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/invitetrue/' + id).then(function(response) {
     });
     return promise;
   };
 
   var inviteFalse = function(id) {
-    var promise = $http.put('/contactlistinvitefalse/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/invitefalse/' + id).then(function(response) {
     });
     return promise;
   };
 
   var challengerTrue = function(id) {
-    var promise = $http.put('/contactlistchallengertrue/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/challengertrue/' + id).then(function(response) {
     });
     return promise;
   };
 
   var challengerFalse = function(id) {
-    var promise = $http.put('/contactlistchallengerfalse/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/challengerfalse/' + id).then(function(response) {
     });
     return promise;
   };
 
   var nevercontactTrue = function(id) {
-    var promise = $http.put('/contactlistnevercontacttrue/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/nevercontacttrue/' + id).then(function(response) {
     });
     return promise;
   };
 
   var nevercontactFalse = function(id) {
-    var promise = $http.put('/contactlistnevercontactfalse/' + id).then(function(response) {
+    var promise = $http.put('/contactlist/nevercontactfalse/' + id).then(function(response) {
     });
     return promise;
   };
