@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 var Contact = require('../models/contact');
 
 router.get('/', function(req, res) {
-  Contact.find({}, function(err, data) {
+  console.log(req.user);
+  User.find({}, function(err, data) {
     if (err) {
       console.log('ERROR:', err);
     }

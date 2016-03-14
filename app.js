@@ -4,9 +4,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var contactlist = require('./routes/contact');
-// var passport = require('passport');
+var passport = require('passport');
+var auth = require('./routes/auth');
 var session = require('express-session');
 
+require('./config/passport')(passport); // pass passport for configuration
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,6 +16,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 mongoose.connect('mongodb://localhost/bbupdata');
 
 app.use('/contactlist', contactlist);
+
 
 // Passport Session Configuration //
 app.use(session({
@@ -24,9 +27,13 @@ app.use(session({
    cookie: {maxage: 60000, secure: false}
 }));
 
-// // start up passport sessions
-// app.use(passport.initialize());
-// app.use(passport.session());
+// start up passport sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
+// app.use('/auth', auth);
+
+require('./routes/auth.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 
 // Routes

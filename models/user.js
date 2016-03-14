@@ -1,11 +1,11 @@
 // load the things we need
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt');
-var ContactSchema = require('contact.js').Schema;
+var ContactSchema = require('./contact').schema;
 
 // define the schema for our user model
 var userSchema = mongoose.Schema({
-    id: String,
+    google_id: String,
     token: String,
     email: String,
     name: String,
