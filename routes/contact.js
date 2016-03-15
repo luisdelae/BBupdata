@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var Contact = require('../models/contact');
+var mongoose = require('mongoose');
 
+//get all contacts from db
 router.get('/:id', function(req, res) {
   // console.log(req.user);
   User.findById({"_id": req.params.id}, function(err, data) {
-    console.log(req.params);
     if (err) {
       console.log('ERROR:', err);
     }
@@ -14,17 +15,10 @@ router.get('/:id', function(req, res) {
   });
 });
 
-// router.get('/:id', function(req, res) {
-//   Contact.findById({"_id": req.params.id}, function(err, data) {
-//     if (err) {
-//       console.log('ERROR:', err);
-//     }
-//     res.send(data);
-//   });
-// });
-
-router.post('/', function(req, res) {
-  var addContact = new Contact({
+//save new contact to db
+router.put('/newcontact/:id', function(req, res) {
+  var addContact = {
+    "_id": new mongoose.Types.ObjectId(),
     "dateadded": new Date(),
     "name": req.body.name,
     "standout": req.body.standout,
@@ -37,33 +31,72 @@ router.post('/', function(req, res) {
     "goals": "",
     "struggles": "",
     "notes": ""
-  });
+  };
 
-  //post new contact
-  addContact.save(function(err, data) {
-    if(err) {
-      console.log('ERROR:', err);
-    }
-
-    Contact.find({}, function(err, data) {
-      if(err) {
+  User.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $push: {"contactInfo": {
+        _id: addContact._id,
+        dateadded: addContact.dateadded,
+        name: addContact.name,
+        standout: addContact.standout,
+        convoinit: addContact.convoinit,
+        invite: addContact.invite,
+        challenger: addContact.challenger,
+        nevercontact: addContact.nevercontact,
+        occupation: addContact.occupation,
+        family: addContact.family,
+        goals: addContact.goals,
+        struggles: addContact.struggles,
+        notes: addContact.notes,
+      }}
+    }, {safe: true, upsert: true, new : true},
+    function(err, data) {
+      if (err) {
         console.log('ERROR:', err);
       }
-
       res.send(data);
+    }
+  );
 
-    });
-  });
+  // //post new contact
+  // addContact.save(function(err, data) {
+  //   if(err) {
+  //     console.log('ERROR:', err);
+  //   }
+  //
+  //   Contact.find({}, function(err, data) {
+  //     if(err) {
+  //       console.log('ERROR:', err);
+  //     }
+  //
+  //     res.send(data);
+  //
+  //   });
+  // });
 });
 
-router.get('/:id', function(req, res) {
-  Contact.findById({"_id": req.params.id}, function(err, data) {
+//get selected contact
+router.get('/selectedContactId/:id/:page', function(req, res) {
+  User.findOne({"contactInfo._id": req.params.page,}, function(err, data) {
     if (err) {
       console.log('ERROR:', err);
     }
     res.send(data);
   });
 });
+
+// //old get selected contact data
+// router.get('/selectedContactId/:id/:page', function(req, res) {
+//   console.log('req.params:: ', req.params);
+//   Contact.findById({"_id": req.params.id}, function(err, data) {
+//     if (err) {
+//       console.log('ERROR:', err);
+//     }
+//     res.send(data);
+//   });
+// });
 
 router.put('/:id', function(req, res) {
 
@@ -76,7 +109,7 @@ router.put('/:id', function(req, res) {
     "notes": req.body.notes
   };
 
-  Contact.findByIdAndUpdate(
+  User.findByIdAndUpdate(
     {_id: req.params.id},
     {
       $set: {name: editContact.name,
@@ -97,11 +130,10 @@ router.put('/:id', function(req, res) {
 });
 
 router.put('/standouttrue/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {standout: true}
+      $set: {'contactInfo.$.standout': true}
     },
     function(err, data) {
       if (err) {
@@ -113,11 +145,10 @@ router.put('/standouttrue/:id', function(req, res) {
 });
 
 router.put('/standoutfalse/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {standout: false}
+      $set: {'contactInfo.$.standout': false}
     },
     function(err, data) {
       if (err) {
@@ -129,11 +160,10 @@ router.put('/standoutfalse/:id', function(req, res) {
 });
 
 router.put('/convoinittrue/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {convoinit: true}
+      $set: {'contactInfo.$.convoinit': true}
     },
     function(err, data) {
       if (err) {
@@ -145,11 +175,10 @@ router.put('/convoinittrue/:id', function(req, res) {
 });
 
 router.put('/convoinitfalse/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {convoinit: false}
+      $set: {'contactInfo.$.convoinit': false}
     },
     function(err, data) {
       if (err) {
@@ -161,11 +190,10 @@ router.put('/convoinitfalse/:id', function(req, res) {
 });
 
 router.put('/invitetrue/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {invite: true}
+      $set: {'contactInfo.$.invite': true}
     },
     function(err, data) {
       if (err) {
@@ -177,11 +205,10 @@ router.put('/invitetrue/:id', function(req, res) {
 });
 
 router.put('/invitefalse/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {invite: false}
+      $set: {'contactInfo.$.invite': false}
     },
     function(err, data) {
       if (err) {
@@ -193,11 +220,10 @@ router.put('/invitefalse/:id', function(req, res) {
 });
 
 router.put('/challengertrue/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {challenger: true}
+      $set: {'contactInfo.$.challenger': true}
     },
     function(err, data) {
       if (err) {
@@ -209,11 +235,10 @@ router.put('/challengertrue/:id', function(req, res) {
 });
 
 router.put('/challengerfalse/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {challenger: false}
+      $set: {'contactInfo.$.challenger': false}
     },
     function(err, data) {
       if (err) {
@@ -225,11 +250,10 @@ router.put('/challengerfalse/:id', function(req, res) {
 });
 
 router.put('/nevercontacttrue/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {nevercontact: true}
+      $set: {'contactInfo.$.nevercontact': true}
     },
     function(err, data) {
       if (err) {
@@ -241,11 +265,10 @@ router.put('/nevercontacttrue/:id', function(req, res) {
 });
 
 router.put('/nevercontactfalse/:id', function(req, res) {
-
-  Contact.findByIdAndUpdate(
-    {_id: req.params.id},
+  User.update(
+    {'contactInfo._id': req.params.id},
     {
-      $set: {nevercontact: false}
+      $set: {'contactInfo.$.nevercontact': false}
     },
     function(err, data) {
       if (err) {

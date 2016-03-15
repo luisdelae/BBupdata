@@ -8,7 +8,7 @@ function($scope, $http, $location, filter, ContactFactory) {
   $scope.contactFactory.factoryGetContactList().then(function() {
     $scope.contacts = ContactFactory.allContacts;
   });
-  
+
   // $scope.contactFactory.factoryGetCurrentUserId();
 
   $scope.addContact = function(ev) {
@@ -16,6 +16,7 @@ function($scope, $http, $location, filter, ContactFactory) {
   };
 
   $scope.contactInfo = function(id) {
+    console.log('selected id: ', id);
     $scope.contactFactory.getContactId(id);
     $location.path('contactinfo');
   };

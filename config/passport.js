@@ -20,7 +20,7 @@ module.exports = function(passport) {
   // used to serialize the user for the session
 
   passport.serializeUser(function(user, done) {
-    console.log(user);
+    // console.log(user);
     done(null, user.id);
   });
 
@@ -46,7 +46,6 @@ module.exports = function(passport) {
     // asynchronous
     process.nextTick(function() {
       // check if the user is already logged in
-      console.log('creating user in db');
       if (!req.user) {
 
         User.findOne({ 'google_id' : profile.id }, function(err, user) {

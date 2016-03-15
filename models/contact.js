@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var ContactSchema =
   new Schema({
+    "_id": Schema.Types.ObjectId,
     "dateadded": Date,
     "name": String,
     "standout": Boolean,

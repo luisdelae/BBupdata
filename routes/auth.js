@@ -30,7 +30,7 @@ module.exports = function(app, passport) {
   }
 
   app.get('/home', isLoggedIn, function(req, res) {
-    console.log('user logged in :: ', req.user);
+    // console.log('user logged in :: ', req.user);
     res.sendFile(path.resolve(__dirname, '../public/views/home.html'));
   });
 
