@@ -3,15 +3,25 @@ var router = express.Router();
 var User = require('../models/user');
 var Contact = require('../models/contact');
 
-router.get('/', function(req, res) {
-  console.log(req.user);
-  User.find({}, function(err, data) {
+router.get('/:id', function(req, res) {
+  // console.log(req.user);
+  User.findById({"_id": req.params.id}, function(err, data) {
+    console.log(req.params);
     if (err) {
       console.log('ERROR:', err);
     }
     res.send(data);
   });
 });
+
+// router.get('/:id', function(req, res) {
+//   Contact.findById({"_id": req.params.id}, function(err, data) {
+//     if (err) {
+//       console.log('ERROR:', err);
+//     }
+//     res.send(data);
+//   });
+// });
 
 router.post('/', function(req, res) {
   var addContact = new Contact({

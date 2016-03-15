@@ -29,6 +29,8 @@
     "css-reset": "0.0.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "google-auth-library": "^0.9.7",
+    "googleapis": "^2.1.7",
     "jquery": "^2.2.1",
     "mongoose": "^4.4.6",
     "ng-infinite-scroll": "^1.2.1",

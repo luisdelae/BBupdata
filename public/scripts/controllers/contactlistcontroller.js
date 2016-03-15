@@ -8,6 +8,8 @@ function($scope, $http, $location, filter, ContactFactory) {
   $scope.contactFactory.factoryGetContactList().then(function() {
     $scope.contacts = ContactFactory.allContacts;
   });
+  
+  // $scope.contactFactory.factoryGetCurrentUserId();
 
   $scope.addContact = function(ev) {
     ContactFactory.factoryCallContactForm(ev);

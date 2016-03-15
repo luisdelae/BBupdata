@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
   <head>
     <title>BBupdata</title>
 
-    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <!-- <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <!-- <meta name="google-signin-client_id" content="160476768363-pf4jt0hjvij31s4c8r9rbh7tfh2dbhm4.apps.googleusercontent.com"> -->
-    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+    <script type="text/javascript" src="/scripts/app.js"></script> -->
 
     <link rel="stylesheet" href="/vendors/reset.css" />
     <link rel="stylesheet" href="/vendors/skeleton.css" />
@@ -29,36 +26,9 @@
         </p>
       </div>
     </header>
-
-    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
-
-    <a href="/auth/google">Auth Google</a>
-    <a href="/auth/logout">Log Out</a>
-
-    <!-- <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log("Name: " + profile.getName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      };
-    </script>
-
-    <a href="#" onclick="signOut();">Sign out</a>
-    <script>
-      function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-        });
-      }
-    </script> -->
-
+    <main>
+      <a href="/auth/google">Auth Google</a>
+      <a href="/auth/logout">Log Out</a>
+    </main>
   </body>
 </html>

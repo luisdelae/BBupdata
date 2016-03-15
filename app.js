@@ -17,6 +17,19 @@ mongoose.connect('mongodb://localhost/bbupdata');
 
 app.use('/contactlist', contactlist);
 
+//added this to try to get user info from server
+// app.use('/userinfo', userinfo);
+
+// app.get('https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyC4PNGZG8mwGGge4cMpxV0Dxn3OKHe8Ohs', function(req, res) {
+//   console.log('calendar event list: ', res);
+//   (function sendData (err, data) {
+//     if (err) {
+//       console.log('ERROR:', err);
+//     }
+//     res.send(data);
+//   }());
+// });
+
 
 // Passport Session Configuration //
 app.use(session({
@@ -31,7 +44,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use('/auth', auth);
 
 require('./routes/auth.js')(app, passport); // load our routes and pass in our app and fully configured passport
 

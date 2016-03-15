@@ -1,6 +1,6 @@
 // var express = require('express');
 // var router = express.Router();
-// var passport = require('passport');
+// var passport = require('passport'); //uncommented this to try to get user info from server
 var path = require('path');
 
 var contact = require('./contact');
@@ -25,12 +25,12 @@ module.exports = function(app, passport) {
   function isLoggedIn(req, res, next) {
       if (req.isAuthenticated())
           return next();
-
+      // console.log('user logged in::', req.user);
       res.redirect('/');
   }
 
   app.get('/home', isLoggedIn, function(req, res) {
-    console.log(req.user);
+    console.log('user logged in :: ', req.user);
     res.sendFile(path.resolve(__dirname, '../public/views/home.html'));
   });
 
