@@ -14,6 +14,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
 
     <script type="text/javascript" src="/scripts/factories/contactfactory.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/usercontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/contactlistcontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/calendarcontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/addcontactcontroller.js"></script>
@@ -34,9 +35,34 @@
         <h1>BBupdata</h1>
       </div>
       <div class="four columns userNav">
-        <p>
-          Welcome, (insert user here)!
-        </p>
+        <div ng-controller="UserController" ng-cloak="" class="menuBardemoBasicUsage">
+          <md-toolbar class="userToolbar">
+            <div layout="row">
+              <div>
+                <md-menu-bar>
+                  <md-menu>
+                    <button ng-click="$mdOpenMenu()">
+                      Welcome, {{user}}!
+                    </button>
+                    <md-menu-content>
+                      <md-menu-item>
+                        <md-button ng-href="/auth/logout">
+                          Log Out
+                        </md-button>
+                      </md-menu-item>
+                      <md-menu-divider></md-menu-divider>
+                      <md-menu-item>
+                        <md-button>
+                          TestButton
+                        </md-button>
+                      </md-menu-item>
+                    </md-menu-content>
+                  </md-menu>
+                </md-menu-bar>
+              </div>
+            </div>
+          </md-toolbar>
+        </div>
       </div>
     </header>
     <div class="row" ng-include="'./templates/nav.html'"></div>

@@ -74,3 +74,9 @@ th {
   text-align: center;
   line-height: 20em;
 }
+
+.userToolbar {
+  border: solid 1px black;
+  background-color: gray;
+  text-align: left;
+}
