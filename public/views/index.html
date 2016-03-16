@@ -3,10 +3,6 @@
   <head>
     <title>BBupdata</title>
 
-    <!-- <script type="text/javascript" src="/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script> -->
-
     <link rel="stylesheet" href="/vendors/reset.css" />
     <link rel="stylesheet" href="/vendors/skeleton.css" />
     <link rel="stylesheet" href="/styles/stylesheet.css" />
@@ -22,16 +18,13 @@
       </div>
       <div class="four columns userNav">
         <p>
-          Welcome, (insert user here)!
         </p>
       </div>
     </header>
     <main>
       <div class="authbuttons">
-        <!-- <a href="/auth/google">Auth Google</a> -->
         <input type="button" onclick="location.href='/auth/google';" value="Sign In" />
-        <a href="/auth/logout">Log Out</a>
-        <!-- <input type="button" class="g-signin2" onclick="location.href='https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000';" value="Sign Out" /> -->
+        <input type="button" onclick="location.href='/auth/logout';" value="Sign Out" />
       </div>
     </main>
   </body>

@@ -19,14 +19,16 @@ module.exports = function(app, passport) {
   app.get('/auth/logout', isLoggedIn, function(req, res) {
     var user = req.user;
 
-    req.logout();
-    // req.redirect('/');
-
     user.token = undefined;
     user.save(function(err) {
-            console.log(user, ' has been successfully logged out.');
-            res.redirect('/');
-        });
+      console.log(user, ' has been successfully logged out.');
+      // res.redirect('/');
+      req.logout();
+      res.redirect('https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000');
+    });
+    // req.session.destroy();
+
+    // req.redirect('/');
   });
 
   // route middleware to ensure user is logged in

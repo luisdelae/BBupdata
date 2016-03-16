@@ -5,27 +5,15 @@ function($http, $mdDialog, $mdMedia) {
   var selectedContactId;
   var selectedContactData;
   var currentUserId;
-
-  //added this to try to get current user info from server
-  // var getCurrentUserId = function() {
-  //   var promise = $http.get('/userinfo/currentuser').then(function(response) {
-  //     console.log(response);
-  //   });
-  //   return promise;
-  // };
-
-  // var getContactList = function() {
-  //   var promise = $http.get('/contactlist/' + currentUserId).then(function(response) {
-  //     console.log('get list: ', response.data.contactInfo);
-  //     allContacts.list = response.data.contactInfo;
-  //   });
-  //   return promise;
-  // };
+  var currentUserFullName;
+  var currentUserFirstName;
 
   var getContactList = function() {
     var promise = $http.get('/contactlist/').then(function(response) {
       console.log('get list: ', response.data);
       currentUserId = response.data._id;
+      currentUserFullName = response.data.name.split(' ');
+      currentUserFirstName = currentUserFullName[0];
       allContacts.list = response.data.contactInfo;
     });
     return promise;

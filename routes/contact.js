@@ -9,10 +9,10 @@ module.exports = function(app, passport) {
 
   function isLoggedIn(req, res, next) {
     // console.log('auth.js: ', req.isAuthenticated());
-      if (req.isAuthenticated())
-          return next();
-      // console.log('user logged in::', req.user);
-      res.redirect('/');
+    if (req.isAuthenticated() && req.user.token !== undefined)
+      return next();
+    // console.log('user logged in::', req.user);
+    res.redirect('/');
   }
 
   app.get('/contactlist/', isLoggedIn, function(req, res) {
