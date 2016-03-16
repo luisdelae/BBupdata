@@ -1,5 +1,5 @@
 .headerContainer {
-  background-color: gray;
+  /*background-color: gray;*/
 }
 
 h1 {
@@ -7,7 +7,9 @@ h1 {
 }
 
 .userNav {
-  text-align: right;
+  margin: 0 auto;
+  width: 50%;
+  line-height: 3em;
 }
 
 ul {
@@ -73,10 +75,4 @@ th {
 .authbuttons {
   text-align: center;
   line-height: 20em;
-}
-
-.userToolbar {
-  border: solid 1px black;
-  background-color: gray;
-  text-align: left;
 }

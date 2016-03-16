@@ -1,15 +1,18 @@
-myApp.controller('UserController', ['$scope', '$http', '$location', 'ContactFactory', '$mdDialog',
-  function($scope, $http, $location, $mdDialog, ContactFactory) {
+myApp.controller('UserController', ['$scope', '$http', '$location', '$mdDialog',
+  function($scope, $http, $location, $mdDialog) {
 
   console.log('loaded UserController');
 
-  $scope.contactFactory = ContactFactory;
+  $scope.UserFirstName;
 
-  $scope.contacts = [];
-  $scope.displayedCollection = $scope.contacts.list;
+  $scope.getContactList = function() {
+    var promise = $http.get('/contactlist/').then(function(response) {
+      currentUserFullName = response.data.name.split(' ');
+      $scope.currentUserFirstName = currentUserFullName[0];
+    });
+    return promise;
+  };
 
-  $scope.contactFactory.factoryGetContactList().then(function() {
-    $scope.userFirstName = ContactFactory.currentUserFirstName;
-  });
+  $scope.getContactList();
 
 }]);

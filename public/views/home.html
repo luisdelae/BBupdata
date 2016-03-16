@@ -34,15 +34,15 @@
       <div class="four columns">
         <h1>BBupdata</h1>
       </div>
-      <div class="four columns userNav">
+      <div class="four columns">
         <div ng-controller="UserController" ng-cloak="" class="menuBardemoBasicUsage">
-          <md-toolbar class="userToolbar">
+          <md-toolbar class="md-menu-toolbar">
             <div layout="row">
-              <div>
+              <div class="userNav">
                 <md-menu-bar>
                   <md-menu>
                     <button ng-click="$mdOpenMenu()">
-                      Welcome, {{user}}!
+                      Welcome, {{currentUserFirstName}}!
                     </button>
                     <md-menu-content>
                       <md-menu-item>
@@ -65,6 +65,7 @@
         </div>
       </div>
     </header>
+
     <div class="row" ng-include="'./templates/nav.html'"></div>
 
     <main ng-view class="row"></main>

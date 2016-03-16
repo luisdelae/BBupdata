@@ -5,15 +5,10 @@ function($http, $mdDialog, $mdMedia) {
   var selectedContactId;
   var selectedContactData;
   var currentUserId;
-  var currentUserFullName;
-  var currentUserFirstName;
 
   var getContactList = function() {
     var promise = $http.get('/contactlist/').then(function(response) {
-      console.log('get list: ', response.data);
       currentUserId = response.data._id;
-      currentUserFullName = response.data.name.split(' ');
-      currentUserFirstName = currentUserFullName[0];
       allContacts.list = response.data.contactInfo;
     });
     return promise;
