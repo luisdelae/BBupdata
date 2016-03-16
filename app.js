@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.connect('mongodb://localhost/bbupdata');
 
-app.use('/contactlist', contactlist);
+// app.use('/contactlist', contactlist);
 
 //added this to try to get user info from server
 // app.use('/userinfo', userinfo);
@@ -46,7 +46,7 @@ app.use(passport.session());
 
 
 require('./routes/auth.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
+require('./routes/contact.js')(app, passport);
 
 // Routes
 // app.use('/register', register);

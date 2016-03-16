@@ -4,7 +4,7 @@ function($http, $mdDialog, $mdMedia) {
   var allContacts = {};
   var selectedContactId;
   var selectedContactData;
-  var currentUserId = '56e8309f897b2f53cb267d3c';
+  var currentUserId;
 
   //added this to try to get current user info from server
   // var getCurrentUserId = function() {
@@ -14,9 +14,18 @@ function($http, $mdDialog, $mdMedia) {
   //   return promise;
   // };
 
+  // var getContactList = function() {
+  //   var promise = $http.get('/contactlist/' + currentUserId).then(function(response) {
+  //     console.log('get list: ', response.data.contactInfo);
+  //     allContacts.list = response.data.contactInfo;
+  //   });
+  //   return promise;
+  // };
+
   var getContactList = function() {
-    var promise = $http.get('/contactlist/' + currentUserId).then(function(response) {
-      console.log('get list: ', response.data.contactInfo);
+    var promise = $http.get('/contactlist/').then(function(response) {
+      console.log('get list: ', response.data);
+      currentUserId = response.data._id;
       allContacts.list = response.data.contactInfo;
     });
     return promise;
