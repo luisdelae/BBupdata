@@ -16,9 +16,17 @@ module.exports = function(app, passport) {
     })
   );
 
-  app.get('/auth/logout', function(req, res) {
+  app.get('/auth/logout', isLoggedIn, function(req, res) {
+    var user = req.user;
+
     req.logout();
-    res.redirect('/');
+    // req.redirect('/');
+
+    user.token = undefined;
+    user.save(function(err) {
+            console.log(user, ' has been successfully logged out.');
+            res.redirect('/');
+        });
   });
 
   // route middleware to ensure user is logged in
@@ -30,7 +38,7 @@ module.exports = function(app, passport) {
   }
 
   app.get('/home', isLoggedIn, function(req, res) {
-    console.log('user logged in :: ', req.user);
+    // console.log('user logged in :: ', req.user);
     res.sendFile(path.resolve(__dirname, '../public/views/home.html'));
   });
 

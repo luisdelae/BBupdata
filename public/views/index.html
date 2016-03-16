@@ -27,8 +27,12 @@
       </div>
     </header>
     <main>
-      <a href="/auth/google">Auth Google</a>
-      <a href="/auth/logout">Log Out</a>
+      <div class="authbuttons">
+        <!-- <a href="/auth/google">Auth Google</a> -->
+        <input type="button" onclick="location.href='/auth/google';" value="Sign In" />
+        <a href="/auth/logout">Log Out</a>
+        <!-- <input type="button" class="g-signin2" onclick="location.href='https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000';" value="Sign Out" /> -->
+      </div>
     </main>
   </body>
 </html>

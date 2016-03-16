@@ -69,3 +69,8 @@ td img, .contactinfoclass img {
 th {
   font-weight: bold;
 }
+
+.authbuttons {
+  text-align: center;
+  line-height: 20em;
+}

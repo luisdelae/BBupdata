@@ -56,6 +56,7 @@ module.exports = function(passport) {
 
             // if there is a user id already but no token (user was linked at one point and then removed)
             if (!user.token) {
+              console.log('token thing');
               user.token = token;
               user.name  = profile.displayName;
               user.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
@@ -70,6 +71,7 @@ module.exports = function(passport) {
 
             return done(null, user);
           } else {
+            console.log('new user created');
               var newUser = new User();
 
               newUser.google_id = profile.id;
@@ -78,16 +80,17 @@ module.exports = function(passport) {
               newUser.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
 
               newUser.save(function(err) {
-                  if (err)
-                    return done(err);
+                if (err)
+                  return done(err);
 
-                  return done(null, newUser);
-                });
+                return done(null, newUser);
+              });
             }
         });
 
       } else {
         // user already exists and is logged in, we have to link accounts
+        console.log('link thing');
         var user = req.user; // pull the user out of the session
 
         user.google_id = profile.id;

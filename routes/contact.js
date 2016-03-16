@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 module.exports = function(app, passport) {
 
   function isLoggedIn(req, res, next) {
-    console.log('auth.js: ', req.isAuthenticated());
+    // console.log('auth.js: ', req.isAuthenticated());
       if (req.isAuthenticated())
           return next();
       // console.log('user logged in::', req.user);
@@ -16,7 +16,7 @@ module.exports = function(app, passport) {
   }
 
   app.get('/contactlist/', isLoggedIn, function(req, res) {
-    console.log('req.user: ', req.user);
+    // console.log('req.user: ', req.user);
     User.findById({"_id": req.user._id}, function(err, data) {
       if (err) {
         console.log('ERROR:', err);
@@ -108,6 +108,37 @@ module.exports = function(app, passport) {
   //   });
   // });
 
+  // app.put('/contactlist/:id', function(req, res) {
+  //
+  //   var editContact = {
+  //     "name": req.body.name,
+  //     "occupation": req.body.occupation,
+  //     "family": req.body.family,
+  //     "goals": req.body.goals,
+  //     "struggles": req.body.struggles,
+  //     "notes": req.body.notes
+  //   };
+  //
+  //   User.findByIdAndUpdate(
+  //     {_id: req.params.id},
+  //     {
+  //       $set: {name: editContact.name,
+  //       occupation: editContact.occupation,
+  //       family: editContact.family,
+  //       goals: editContact.goals,
+  //       struggles: editContact.struggles,
+  //       notes: editContact.notes
+  //       }
+  //     },
+  //     function(err, data) {
+  //       if (err) {
+  //         console.log('ERROR:', err);
+  //       }
+  //       res.send(data);
+  //     }
+  //   );
+  // });
+
   app.put('/contactlist/:id', function(req, res) {
 
     var editContact = {
@@ -119,15 +150,15 @@ module.exports = function(app, passport) {
       "notes": req.body.notes
     };
 
-    User.findByIdAndUpdate(
-      {_id: req.params.id},
+    User.update(
+      {'contactInfo._id': req.params.id},
       {
-        $set: {name: editContact.name,
-        occupation: editContact.occupation,
-        family: editContact.family,
-        goals: editContact.goals,
-        struggles: editContact.struggles,
-        notes: editContact.notes
+        $set: {'contactInfo.$.name': editContact.name,
+        'contactInfo.$.occupation': editContact.occupation,
+        'contactInfo.$.family': editContact.family,
+        'contactInfo.$.goals': editContact.goals,
+        'contactInfo.$.struggles': editContact.struggles,
+        'contactInfo.$.notes': editContact.notes
         }
       },
       function(err, data) {

@@ -20,15 +20,15 @@ mongoose.connect('mongodb://localhost/bbupdata');
 //added this to try to get user info from server
 // app.use('/userinfo', userinfo);
 
-// app.get('https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyC4PNGZG8mwGGge4cMpxV0Dxn3OKHe8Ohs', function(req, res) {
-//   console.log('calendar event list: ', res);
-//   (function sendData (err, data) {
-//     if (err) {
-//       console.log('ERROR:', err);
-//     }
-//     res.send(data);
-//   }());
-// });
+app.get('https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyCFvSdVmtOo90Ix46P280K_n7zr5iyh6ZM', function(req, res) {
+  console.log('calendar event list: ', res);
+  (function sendData (err, data) {
+    if (err) {
+      console.log('ERROR:', err);
+    }
+    res.send(data);
+  }());
+});
 
 
 // Passport Session Configuration //
