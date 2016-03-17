@@ -1,6 +1,5 @@
 <div class="contactinfoclass row">
   <div class="row">
-    <button class="two columns">Remind</button>
     <div class="two columns">
       <img src="../images/statusicons/standoutfalse.png" ng-if="contact.standout == false || contact.standout == undefined" ng-click="standoutTrue(contact._id)"/>
       <img src="../images/statusicons/standouttrue.png" ng-if="contact.standout == true" ng-click="standoutFalse(contact._id)"/>
@@ -50,10 +49,10 @@
       </div>
       <div>
         <button ng-click="editPost()">Save</button>
-        <button>Upcoming Follow-ups</button>
+        <button ng-click="addReminder($event)">Remind</button>
       </div>
-
+      <div>
+      </div>
     </form>
-
   </div>
 </div>

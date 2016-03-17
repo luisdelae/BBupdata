@@ -21,7 +21,7 @@ module.exports = function(app, passport) {
 
     user.token = undefined;
     user.save(function(err) {
-      console.log(user, ' has been successfully logged out.');
+      // console.log(user, ' has been successfully logged out.');
       // res.redirect('/');
       req.logout();
       res.redirect('https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000');

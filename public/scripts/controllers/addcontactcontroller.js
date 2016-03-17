@@ -33,6 +33,6 @@ myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
     });
 
     clearForm();
-
+    $mdDialog.hide();
   };
 }]);

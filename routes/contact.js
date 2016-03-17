@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var Contact = require('../models/contact');
+var Reminder = require('../models/reminders');
 var mongoose = require('mongoose');
 
 //get all contacts from db
@@ -69,22 +70,30 @@ module.exports = function(app, passport) {
         res.send(data);
       }
     );
+  });
 
-    // //post new contact
-    // addContact.save(function(err, data) {
-    //   if(err) {
-    //     console.log('ERROR:', err);
-    //   }
-    //
-    //   Contact.find({}, function(err, data) {
-    //     if(err) {
-    //       console.log('ERROR:', err);
-    //     }
-    //
-    //     res.send(data);
-    //
-    //   });
-    // });
+  // add new reminder to a certain contact
+  app.post('/contactlist/newreminder/', function(req, res) {
+    var addReminder = new Reminder({
+      // "_id": new mongoose.Types.ObjectId(),
+      "contactId": req.body.contactId,
+      "name": req.body.name,
+      "date": req.body.date,
+      "subject": req.body.subject
+    });
+    addReminder.save(
+      function(err, data) {
+        if (err) {
+          console.log('ERROR save:', err);
+        }
+        Reminder.find({}, function(err, data) {
+          if(err) {
+            console.log('ERROR find:', err);
+          }
+          res.send(data);
+        });
+      }
+    );
   });
 
   //get selected contact
@@ -97,50 +106,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  // //old get selected contact data
-  // router.get('/selectedContactId/:id/:page', function(req, res) {
-  //   console.log('req.params:: ', req.params);
-  //   Contact.findById({"_id": req.params.id}, function(err, data) {
-  //     if (err) {
-  //       console.log('ERROR:', err);
-  //     }
-  //     res.send(data);
-  //   });
-  // });
-
-  // app.put('/contactlist/:id', function(req, res) {
-  //
-  //   var editContact = {
-  //     "name": req.body.name,
-  //     "occupation": req.body.occupation,
-  //     "family": req.body.family,
-  //     "goals": req.body.goals,
-  //     "struggles": req.body.struggles,
-  //     "notes": req.body.notes
-  //   };
-  //
-  //   User.findByIdAndUpdate(
-  //     {_id: req.params.id},
-  //     {
-  //       $set: {name: editContact.name,
-  //       occupation: editContact.occupation,
-  //       family: editContact.family,
-  //       goals: editContact.goals,
-  //       struggles: editContact.struggles,
-  //       notes: editContact.notes
-  //       }
-  //     },
-  //     function(err, data) {
-  //       if (err) {
-  //         console.log('ERROR:', err);
-  //       }
-  //       res.send(data);
-  //     }
-  //   );
-  // });
-
   app.put('/contactlist/:id', function(req, res) {
-
     var editContact = {
       "name": req.body.name,
       "occupation": req.body.occupation,
@@ -149,7 +115,6 @@ module.exports = function(app, passport) {
       "struggles": req.body.struggles,
       "notes": req.body.notes
     };
-
     User.update(
       {'contactInfo._id': req.params.id},
       {

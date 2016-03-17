@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+// var ReminderSchema = require('./reminders').schema;
 
 var ContactSchema =
   new Schema({
@@ -15,11 +16,8 @@ var ContactSchema =
     "family": String,
     "goals": String,
     "struggles": String,
-    "notes": String,
-    "date1": Date,
-    "date2": Date,
-    "date3": Date,
-    "date4": Date
+    "notes": String
+    // reminders: [ReminderSchema]
   },
   {
     collection: 'contacts'

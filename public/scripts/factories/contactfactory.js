@@ -21,6 +21,13 @@ function($http, $mdDialog, $mdMedia) {
     return promise;
   };
 
+  var saveReminder = function(reminder) {
+    var promise = $http.post('/contactlist/newreminder/', reminder).then(function(response) {
+      console.log('added reminder: ', response);
+    });
+    return promise;
+  };
+
   var callContactForm = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
 
@@ -33,10 +40,21 @@ function($http, $mdDialog, $mdMedia) {
     });
   };
 
+  var callReminderForm = function(ev) {
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+
+    $mdDialog.show({
+      templateUrl: '../views/templates/addreminder.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen,
+    });
+  };
+
   var getSelectedContact = function() {
     var promise = $http.get('/contactlist/selectedContactId/' + currentUserId + '/' + selectedContactId).then(function(response){
       // selectedContactData = response.data;
-      console.log('response.data: ', response.data);
       var selectedContactDataArray = response.data.contactInfo;
       for (var i = 0 ; i < selectedContactDataArray.length; i++) {
         if (selectedContactDataArray[i]._id == selectedContactId) {
@@ -107,8 +125,15 @@ function($http, $mdDialog, $mdMedia) {
     factoryContactList: function() {
       return allContacts.list;
     },
+    //added this to try to get selected contact's name to addreminder controller
+    factorySelectedContactData: function() {
+      return selectedContactData;
+    },
     factorySaveContact: function(contact) {
       return saveContact(contact);
+    },
+    factorySaveReminder: function(reminder) {
+      return saveReminder(reminder);
     },
     factoryGetContactList: function() {
       return getContactList();
@@ -128,6 +153,9 @@ function($http, $mdDialog, $mdMedia) {
     },
     factoryCallContactForm: function(ev) {
       callContactForm(ev);
+    },
+    factoryCallReminderForm: function(ev) {
+      callReminderForm(ev);
     },
     factoryStandoutTrue: function(id) {
       return standoutTrue(id);
@@ -159,7 +187,9 @@ function($http, $mdDialog, $mdMedia) {
     factoryNevercontactFalse: function(id) {
       return nevercontactFalse(id);
     },
-    allContacts: allContacts
+    allContacts: allContacts,
+    //added this to try to get selected contact's name to addreminder controller
+    selectedContactData: selectedContactData
   };
 
   return publicFunctions;

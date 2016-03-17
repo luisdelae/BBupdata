@@ -1,10 +1,12 @@
 myApp.controller('ContactInfoController', ['$scope', '$http', 'ContactFactory',
 function($scope, $http, ContactFactory) {
 
-  console.log("Hello from ContactInfoController");
-
   $scope.contactFactory = ContactFactory;
   $scope.contact = {};
+
+  $scope.addReminder = function(ev) {
+    ContactFactory.factoryCallReminderForm(ev);
+  };
 
   $scope.contactFactory.factoryGetSelectedContact().then(function() {
     $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
