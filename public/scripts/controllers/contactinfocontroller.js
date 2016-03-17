@@ -3,6 +3,7 @@ function($scope, $http, ContactFactory) {
 
   $scope.contactFactory = ContactFactory;
   $scope.contact = {};
+  $scope.contactReminders;
 
   $scope.addReminder = function(ev) {
     ContactFactory.factoryCallReminderForm(ev);
@@ -12,6 +13,13 @@ function($scope, $http, ContactFactory) {
     $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
     enterData();
   });
+
+  $scope.contactFactory.factoryGetUserReminders().then(function() {
+    $scope.contactReminders = ContactFactory.currentContactReminders;
+    console.log($scope.contactReminders);
+  });
+
+  // $scope.contactReminders = $scope.contactFactory.factoryGetUserReminders();
 
   function enterData() {
     $scope.standout = $scope.contact.standout;

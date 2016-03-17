@@ -2,6 +2,7 @@ myApp.controller('AddReminderController', ['$scope', '$http', 'ContactFactory',
   '$mdDialog', '$mdMedia', function($scope, $http, ContactFactory, $mdDialog, $mdMedia) {
 
   $scope.contactFactory = ContactFactory;
+  $scope.contactReminders = ContactFactory.currentContactReminders;
   $scope.name = $scope.contactFactory.factorySelectedContactData().name;
   $scope.date = new Date();
 
@@ -10,28 +11,21 @@ myApp.controller('AddReminderController', ['$scope', '$http', 'ContactFactory',
     $scope.subject = "";
   };
 
-  // var makeId = function() {
-  //   var id = "";
-  //   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  //   for( var i = 0; i < 10; i++ ) {
-  //       id += possible.charAt(Math.floor(Math.random() * possible.length));
-  //     }
-  //     console.log(id);
-  //   return id;
-  // };
-
   $scope.saveReminder = function() {
 
     var reminder = {
       contactId: $scope.contactFactory.factorySelectedContactData()._id.toString(),
       name: $scope.name,
       date: $scope.date,
-      subject: $scope.subject
+      subject: $scope.subject,
+      status: false
     };
 
     console.log(reminder);
 
-    $scope.contactFactory.factorySaveReminder(reminder);
+    $scope.contactFactory.factorySaveReminder(reminder).then(function() {
+      $scope.contactReminders = $scope.contactFactory.factoryGetUserReminders();
+    });
 
     clearForm();
     $mdDialog.hide();

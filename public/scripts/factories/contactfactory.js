@@ -5,6 +5,7 @@ function($http, $mdDialog, $mdMedia) {
   var selectedContactId;
   var selectedContactData;
   var currentUserId;
+  var currentContactReminders = {};
 
   var getContactList = function() {
     var promise = $http.get('/contactlist/').then(function(response) {
@@ -24,6 +25,14 @@ function($http, $mdDialog, $mdMedia) {
   var saveReminder = function(reminder) {
     var promise = $http.post('/contactlist/newreminder/', reminder).then(function(response) {
       console.log('added reminder: ', response);
+    });
+    return promise;
+  };
+
+  var getContactReminders = function() {
+    var promise = $http.get('/contactlist/getuserreminders/' + selectedContactId).then(function(response) {
+      currentContactReminders.list = response.data;
+      console.log(response);
     });
     return promise;
   };
@@ -59,10 +68,8 @@ function($http, $mdDialog, $mdMedia) {
       for (var i = 0 ; i < selectedContactDataArray.length; i++) {
         if (selectedContactDataArray[i]._id == selectedContactId) {
           selectedContactData = selectedContactDataArray[i];
-          console.log('selected contact data: ', selectedContactData);
         }
       }
-      console.log(response.data);
     });
     return promise;
   };
@@ -187,9 +194,13 @@ function($http, $mdDialog, $mdMedia) {
     factoryNevercontactFalse: function(id) {
       return nevercontactFalse(id);
     },
+    factoryGetUserReminders: function() {
+      return getContactReminders();
+    },
     allContacts: allContacts,
     //added this to try to get selected contact's name to addreminder controller
-    selectedContactData: selectedContactData
+    selectedContactData: selectedContactData,
+    currentContactReminders: currentContactReminders
   };
 
   return publicFunctions;

@@ -79,7 +79,8 @@ module.exports = function(app, passport) {
       "contactId": req.body.contactId,
       "name": req.body.name,
       "date": req.body.date,
-      "subject": req.body.subject
+      "subject": req.body.subject,
+      "status": req.body.status
     });
     addReminder.save(
       function(err, data) {
@@ -100,9 +101,19 @@ module.exports = function(app, passport) {
   app.get('/contactlist/selectedContactId/:id/:page', function(req, res) {
     User.findOne({"contactInfo._id": req.params.page,}, function(err, data) {
       if (err) {
-        console.log('ERROR:', err);
+        console.log('ERROR: ', err);
       }
       res.send(data);
+    });
+  });
+
+  app.get('/contactlist/getuserreminders/:id', function(req, res) {
+    console.log('req.params.id: ', req.params.id);
+    Reminder.find({"contactId": req.params.id}, function(err, data) {
+        if (err) {
+          console.log('ERROR: ', err);
+        }
+        res.send(data);
     });
   });
 
