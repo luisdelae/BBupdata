@@ -107,14 +107,14 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get('/contactlist/getuserreminders/:id', function(req, res) {
-    console.log('req.params.id: ', req.params.id);
+  app.get('/contactlist/getcontactreminders/:id', function(req, res) {
+    // console.log('req.params.id: ', req.params.id);
     Reminder.find({"contactId": req.params.id}, function(err, data) {
         if (err) {
           console.log('ERROR: ', err);
         }
         res.send(data);
-    });
+    }).sort('status -date');
   });
 
   app.put('/contactlist/:id', function(req, res) {
@@ -286,6 +286,38 @@ module.exports = function(app, passport) {
       {'contactInfo._id': req.params.id},
       {
         $set: {'contactInfo.$.nevercontact': false}
+      },
+      function(err, data) {
+        if (err) {
+          console.log('ERROR:', err);
+        }
+        res.send(data);
+      }
+    );
+  });
+
+  app.put('/contactlist/reminderstatustrue/:id', function(req, res) {
+    // console.log('id for truth status: ', req.params.id);
+    Reminder.update(
+      {'_id': req.params.id},
+      {
+        $set: {'status': true}
+      },
+      function(err, data) {
+        if (err) {
+          console.log('ERROR:', err);
+        }
+        res.send(data);
+      }
+    );
+  });
+
+  app.put('/contactlist/reminderstatusfalse/:id', function(req, res) {
+    console.log('id for truth status: ', req.params.id);
+    Reminder.update(
+      {'_id': req.params.id},
+      {
+        $set: {'status': false}
       },
       function(err, data) {
         if (err) {

@@ -16,10 +16,7 @@ function($scope, $http, ContactFactory) {
 
   $scope.contactFactory.factoryGetUserReminders().then(function() {
     $scope.contactReminders = ContactFactory.currentContactReminders;
-    console.log($scope.contactReminders);
   });
-
-  // $scope.contactReminders = $scope.contactFactory.factoryGetUserReminders();
 
   function enterData() {
     $scope.standout = $scope.contact.standout;
@@ -126,6 +123,22 @@ function($scope, $http, ContactFactory) {
     $scope.contactFactory.factoryNevercontactFalse(id).then(function() {
       $scope.contactFactory.factoryGetSelectedContact().then(function() {
         $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.setComplete = function(id) {
+    $scope.contactFactory.factoryReminderComplete(id).then(function() {
+      $scope.contactFactory.factoryGetUserReminders().then(function() {
+        $scope.contactReminders = ContactFactory.currentContactReminders;
+      });
+    });
+  };
+
+  $scope.setIncomplete = function(id) {
+    $scope.contactFactory.factoryReminderIncomplete(id).then(function() {
+      $scope.contactFactory.factoryGetUserReminders().then(function() {
+        $scope.contactReminders = ContactFactory.currentContactReminders;
       });
     });
   };

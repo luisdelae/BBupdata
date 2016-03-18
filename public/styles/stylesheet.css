@@ -75,3 +75,7 @@ th {
   text-align: center;
   line-height: 20em;
 }
+
+.reminderComplete {
+  background-color: lightgreen;
+}

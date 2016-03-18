@@ -30,7 +30,7 @@ function($http, $mdDialog, $mdMedia) {
   };
 
   var getContactReminders = function() {
-    var promise = $http.get('/contactlist/getuserreminders/' + selectedContactId).then(function(response) {
+    var promise = $http.get('/contactlist/getcontactreminders/' + selectedContactId).then(function(response) {
       currentContactReminders.list = response.data;
       console.log(response);
     });
@@ -128,6 +128,16 @@ function($http, $mdDialog, $mdMedia) {
     return promise;
   };
 
+  var reminderStatusTrue = function(id) {
+    var promise = $http.put('/contactlist/reminderstatustrue/' + id).then(function(response){});
+    return promise;
+  };
+
+  var reminderStatusFalse = function(id) {
+    var promise = $http.put('/contactlist/reminderstatusfalse/' + id).then(function(response){});
+    return promise;
+  };
+
   var publicFunctions = {
     factoryContactList: function() {
       return allContacts.list;
@@ -196,6 +206,12 @@ function($http, $mdDialog, $mdMedia) {
     },
     factoryGetUserReminders: function() {
       return getContactReminders();
+    },
+    factoryReminderComplete: function(id) {
+      return reminderStatusTrue(id);
+    },
+    factoryReminderIncomplete: function(id) {
+      return reminderStatusFalse(id);
     },
     allContacts: allContacts,
     //added this to try to get selected contact's name to addreminder controller
