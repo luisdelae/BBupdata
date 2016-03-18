@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var ReminderSchema =
   new Schema({
-    // "_id": Schema.Types.ObjectId,
+    // "userId": String,
     "contactId": String,
     "name": String,
     "date": Date,
