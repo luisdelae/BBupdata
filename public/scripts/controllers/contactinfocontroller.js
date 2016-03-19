@@ -11,10 +11,11 @@ function($scope, $http, ContactFactory) {
 
   $scope.contactFactory.factoryGetSelectedContact().then(function() {
     $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+    console.log('selectedContactData: ', $scope.contact);
     enterData();
   });
 
-  $scope.contactFactory.factoryGetUserReminders().then(function() {
+  $scope.contactFactory.factoryGetContactReminders().then(function() {
     $scope.contactReminders = ContactFactory.currentContactReminders;
   });
 
@@ -129,7 +130,7 @@ function($scope, $http, ContactFactory) {
 
   $scope.setComplete = function(id) {
     $scope.contactFactory.factoryReminderComplete(id).then(function() {
-      $scope.contactFactory.factoryGetUserReminders().then(function() {
+      $scope.contactFactory.factoryGetContactReminders().then(function() {
         $scope.contactReminders = ContactFactory.currentContactReminders;
       });
     });
@@ -137,7 +138,7 @@ function($scope, $http, ContactFactory) {
 
   $scope.setIncomplete = function(id) {
     $scope.contactFactory.factoryReminderIncomplete(id).then(function() {
-      $scope.contactFactory.factoryGetUserReminders().then(function() {
+      $scope.contactFactory.factoryGetContactReminders().then(function() {
         $scope.contactReminders = ContactFactory.currentContactReminders;
       });
     });

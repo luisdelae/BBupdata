@@ -32,6 +32,7 @@
     "google-auth-library": "^0.9.7",
     "googleapis": "^2.1.7",
     "jquery": "^2.2.1",
+    "moment-timezone": "^0.5.2",
     "mongoose": "^4.4.6",
     "ng-infinite-scroll": "^1.2.1",
     "ng-table": "^0.5.4",

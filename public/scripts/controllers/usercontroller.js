@@ -1,8 +1,6 @@
 myApp.controller('UserController', ['$scope', '$http', '$location', '$mdDialog',
   function($scope, $http, $location, $mdDialog) {
 
-  console.log('loaded UserController');
-
   $scope.UserFirstName;
 
   $scope.getContactList = function() {

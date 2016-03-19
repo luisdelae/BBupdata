@@ -74,8 +74,9 @@ module.exports = function(app, passport) {
 
   // add new reminder to a certain contact
   app.post('/contactlist/newreminder/', function(req, res) {
+    console.log(req.body.userId);
     var addReminder = new Reminder({
-      // "_id": new mongoose.Types.ObjectId(),
+      "userId": req.body.userId,
       "contactId": req.body.contactId,
       "name": req.body.name,
       "date": req.body.date,
@@ -108,13 +109,23 @@ module.exports = function(app, passport) {
   });
 
   app.get('/contactlist/getcontactreminders/:id', function(req, res) {
-    // console.log('req.params.id: ', req.params.id);
     Reminder.find({"contactId": req.params.id}, function(err, data) {
         if (err) {
           console.log('ERROR: ', err);
         }
         res.send(data);
     }).sort('status -date');
+  });
+
+  //Get all reminders for the current USER, using the userId
+  app.get('/contactlist/getuserreminders/:id', function(req, res) {
+    console.log('req.params.id: ', req.params.id);
+    Reminder.find({"userId": req.params.id}, function(err, data) {
+        if (err) {
+          console.log('ERROR: ', err);
+        }
+        res.send(data);
+    });
   });
 
   app.put('/contactlist/:id', function(req, res) {

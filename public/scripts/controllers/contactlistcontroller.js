@@ -16,7 +16,6 @@ function($scope, $http, $location, filter, ContactFactory) {
   };
 
   $scope.contactInfo = function(id) {
-    console.log('selected id: ', id);
     $scope.contactFactory.getContactId(id);
     $location.path('contactinfo');
   };

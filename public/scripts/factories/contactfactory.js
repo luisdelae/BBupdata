@@ -6,6 +6,9 @@ function($http, $mdDialog, $mdMedia) {
   var selectedContactData;
   var currentUserId;
   var currentContactReminders = {};
+  var currentUserReminders = {};
+
+  //need to find a way to get the currentUserId out and into the AddReminderController~~~~~~~~~~
 
   var getContactList = function() {
     var promise = $http.get('/contactlist/').then(function(response) {
@@ -24,7 +27,6 @@ function($http, $mdDialog, $mdMedia) {
 
   var saveReminder = function(reminder) {
     var promise = $http.post('/contactlist/newreminder/', reminder).then(function(response) {
-      console.log('added reminder: ', response);
     });
     return promise;
   };
@@ -32,7 +34,15 @@ function($http, $mdDialog, $mdMedia) {
   var getContactReminders = function() {
     var promise = $http.get('/contactlist/getcontactreminders/' + selectedContactId).then(function(response) {
       currentContactReminders.list = response.data;
-      console.log(response);
+    });
+    return promise;
+  };
+
+  var getUserReminders = function() {
+    var promise = $http.get('/contactlist/getuserreminders/' + currentUserId).then(function(response) {
+      currentUserReminders.list = response.data;
+      // currentUserReminders = response.data;
+      console.log(currentUserReminders.list);
     });
     return promise;
   };
@@ -146,6 +156,10 @@ function($http, $mdDialog, $mdMedia) {
     factorySelectedContactData: function() {
       return selectedContactData;
     },
+    //added this to try to get current user's ID
+    factoryCurrentUserId: function() {
+      return currentUserId;
+    },
     factorySaveContact: function(contact) {
       return saveContact(contact);
     },
@@ -204,7 +218,7 @@ function($http, $mdDialog, $mdMedia) {
     factoryNevercontactFalse: function(id) {
       return nevercontactFalse(id);
     },
-    factoryGetUserReminders: function() {
+    factoryGetContactReminders: function() {
       return getContactReminders();
     },
     factoryReminderComplete: function(id) {
@@ -213,10 +227,14 @@ function($http, $mdDialog, $mdMedia) {
     factoryReminderIncomplete: function(id) {
       return reminderStatusFalse(id);
     },
+    factoryGetUserReminders: function() {
+      return getUserReminders();
+    },
     allContacts: allContacts,
-    //added this to try to get selected contact's name to addreminder controller
     selectedContactData: selectedContactData,
-    currentContactReminders: currentContactReminders
+    currentUserId: currentUserId,
+    currentContactReminders: currentContactReminders,
+    currentUserReminders: currentUserReminders
   };
 
   return publicFunctions;

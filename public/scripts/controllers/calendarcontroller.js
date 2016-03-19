@@ -1,36 +1,47 @@
 myApp.controller('CalendarController', ['$scope', '$http', 'ContactFactory',
   function($scope, $http, ContactFactory) {
 
-  $scope.uiConfig = {
-    calendar:{
-      height: 450,
-      editable: true,
-      header:{
-        left: 'month basicWeek basicDay agendaWeek agendaDay',
-        center: 'title',
-        right: 'today prev,next'
-      },
-      dayClick: $scope.alertEventOnClick,
-      eventDrop: $scope.alertOnDrop,
-      eventResize: $scope.alertOnResize
-    }
-  };
+    $scope.contactFactory = ContactFactory;
 
-  var date = new Date();
-  var d = date.getDate();
-  var m = date.getMonth();
-  var y = date.getFullYear();
 
-  $scope.contactFactory = ContactFactory;
-  $scope.events = [
-    {title: 'All Day Event',start: new Date(y, m, 1)},
-    {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-    {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-    {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-    {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false}
-  ];
+    $scope.uiConfig = {
+      calendar:{
+        height: 450,
+        timezone: 'currentTimezone',
+        editable: true,
+        header:{
+          left: 'month basicWeek basicDay agendaWeek agendaDay',
+          center: 'title',
+          right: 'today prev,next'
+        },
+        dayClick: $scope.alertEventOnClick,
+        eventDrop: $scope.alertOnDrop,
+        eventResize: $scope.alertOnResize
+      }
+    };
+    $scope.events = [];
 
-  $scope.eventSources = [$scope.events];
+    var changeBgColor = function(i) {
+      if($scope.userReminders[i].status === true) {
+        return 'green';
+      }
+    };
+
+    $scope.contactFactory.factoryGetUserReminders().then(function() {
+      $scope.userReminders = $scope.contactFactory.currentUserReminders.list;
+      console.log('userReminders from controller: ', $scope.userReminders);
+      //return an object with an array of objects
+      for(var i = 0; i < $scope.userReminders.length; i++) {
+        $scope.events.push({title: (($scope.userReminders[i].name).split(" "))[0] + ': ' + $scope.userReminders[i].subject, start: moment.tz($scope.userReminders[i].date, moment.tz.guess()), stick: true, backgroundColor: changeBgColor(i)});
+      }
+    });
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    $scope.eventSources = [$scope.events];
 
 
 }]);

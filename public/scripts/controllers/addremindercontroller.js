@@ -14,6 +14,7 @@ myApp.controller('AddReminderController', ['$scope', '$http', 'ContactFactory',
   $scope.saveReminder = function() {
 
     var reminder = {
+      userId: $scope.contactFactory.factoryCurrentUserId().toString(),
       contactId: $scope.contactFactory.factorySelectedContactData()._id.toString(),
       name: $scope.name,
       date: $scope.date,
@@ -21,10 +22,10 @@ myApp.controller('AddReminderController', ['$scope', '$http', 'ContactFactory',
       status: false
     };
 
-    console.log(reminder);
+    console.log('reminder: ', reminder);
 
     $scope.contactFactory.factorySaveReminder(reminder).then(function() {
-      $scope.contactReminders = $scope.contactFactory.factoryGetUserReminders();
+      $scope.contactReminders = $scope.contactFactory.factoryGetContactReminders();
     });
 
     clearForm();
