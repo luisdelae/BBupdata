@@ -32,7 +32,9 @@ myApp.controller('CalendarController', ['$scope', '$http', 'ContactFactory',
       console.log('userReminders from controller: ', $scope.userReminders);
       //return an object with an array of objects
       for(var i = 0; i < $scope.userReminders.length; i++) {
-        $scope.events.push({title: (($scope.userReminders[i].name).split(" "))[0] + ': ' + $scope.userReminders[i].subject, start: moment.tz($scope.userReminders[i].date, moment.tz.guess()), stick: true, backgroundColor: changeBgColor(i)});
+        $scope.events.push({title: (($scope.userReminders[i].name).split(" "))[0] +
+        ': ' + $scope.userReminders[i].subject, start: moment.tz($scope.userReminders[i].date,
+          moment.tz.guess()), stick: true, backgroundColor: changeBgColor(i)});
       }
     });
 

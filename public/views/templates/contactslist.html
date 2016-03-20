@@ -1,38 +1,32 @@
 <div class="container">
   <div class="row">
-    <!-- <div class="one column"><p></p></div> -->
     <div class="twelve columns">
       <table st-table="contactListDisplay" st-safe-src="contacts.list" class="table">
-        <thead>
+        <thead class="tablecontroll">
           <tr>
-            <th>
+            <th class="tablecontroll">
               <md-input-container>
                 <input st-search="name" placeholder="Filter name..." class="searchbox" type="search"/>
               </md-input-container>
             </th>
-            <th><p></p></th>
-            <th><p></p></th>
-            <th><p></p></th>
-            <th>
+            <th class="tablecontroll"><p></p></th>
+            <th class="tablecontroll"><p></p></th>
+            <th class="tablecontroll"><p></p></th>
+            <th class="tablecontroll">
               <md-button class="addContact" ng-click="addContact($event)">Add Contact</md-button>
             </th>
           </tr>
           <tr class="shorttest">
-            <th st-sort="name">Name</th>
-            <th st-sort="standout">Stand Out</th>
-            <th st-sort="convoinit">Start Convo</th>
-            <th st-sort="invite">Invite!</th>
-            <th st-sort="challenger">Challenger</th>
-            <th st-sort="nevercontact">Never Contact</th>
-            <th st-sort-default="reverse" st-sort="dateadded" class="dateDisplay">Date Added</th>
+            <th class="tablecontroll" st-sort="name">Name</th>
+            <th class="tablecontroll" st-sort="standout">Stand Out</th>
+            <th class="tablecontroll" st-sort="convoinit">Start Convo</th>
+            <th class="tablecontroll" st-sort="invite">Invite!</th>
+            <th class="tablecontroll" st-sort="challenger">Challenger</th>
+            <th class="tablecontroll" st-sort="nevercontact">Never Contact</th>
+            <th st-sort-default="reverse" st-sort="dateadded" class="tablecontroll">Date Added</th>
           </tr>
-          <!-- <tr>
-            <th>
-                <input st-search="name" placeholder="Filter by name" class="searchbox" type="search"/>
-            </th>
-          </tr> -->
         </thead>
-        <tbody>
+        <tbody class="tablecontroll">
           <tr ng-repeat="contact in contactListDisplay">
             <td>
               <p class="contactHover" ng-click="contactInfo(contact._id)">
@@ -60,12 +54,11 @@
               <img src="../images/statusicons/nevercontacttrue.png" ng-if="contact.nevercontact == true" ng-click="nevercontactFalse(contact._id)"/>
             </td>
             <td class="dateDisplay">
-              {{contact.dateadded}}
+              {{contact.dateadded | date : format : fullDate}}
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <!-- <div class="one column"><p></p></div> -->
   </div>
 </div>

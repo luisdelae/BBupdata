@@ -43,7 +43,7 @@ myApp.controller('ContactInfoController', ['$scope', '$http', '$mdDialog', '$mdM
     $scope.notes = $scope.contact.notes;
   }
 
-  $scope.editPost = function() {
+  $scope.editPost = function(ev) {
     var contact = {
       name: $scope.name,
       occupation: $scope.occupation,
@@ -55,7 +55,22 @@ myApp.controller('ContactInfoController', ['$scope', '$http', '$mdDialog', '$mdM
 
     $scope.contactFactory.factoryEditContact(contact);
 
-    alert('Contact has been updated');
+    //alert starts here
+    $scope.status = '  ';
+    $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title('Success!')
+        .textContent('Contact information has been updated.')
+        .ariaLabel('Alert success')
+        .ok('OK')
+        .targetEvent(ev)
+    );
+    //alert ends gere
+
   };
 
   $scope.standoutTrue = function(id) {

@@ -18,7 +18,6 @@ h1 {
   text-align: center;
   border-bottom: .15em solid #e74c3c;
   margin-bottom: 0;
-  /*font-weight: 400;*/
 }
 
 .userNav {
@@ -47,14 +46,12 @@ li {
 
 .table {
   margin: 0 auto;
-  /*height: 500px;*/
   border: .5em solid #e74c3c;
   padding: 1em;
 }
 
 .addcontact {
   margin: 1em;
-  /*padding-left: 10em;*/
 }
 
 .contactinfoclass {
@@ -73,13 +70,6 @@ label {
 .moreinfo {
   margin: 3em 1em 1em 1em;
 }
-/*.moreinfo input {
-  width: 100%;
-}
-.moreinfo textarea {
-  width: 100%;
-  max-width: 100%;
-}*/
 
 .contactHover:hover {
   cursor: crosshair;
@@ -105,10 +95,6 @@ td img {
   margin: 0 2em 0 2em;
 }
 
-.dateDisplay {
-  display: none;
-}
-
 th {
   font-weight: bold;
 }
@@ -130,57 +116,56 @@ button {
   background-color: lightgreen;
 }
 
-
-/*Test for fixed headers*/
+/*fixed headers*/
 table.table{
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    height: 40em;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 40em;
 }
 
-table * {
-    box-sizing: inherit;
-    -moz-box-sizing: inherit;
+table.tablecontroll * {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
 }
 
-thead {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+thead.tablecontroll {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-tbody {
-    overflow-y: scroll;
-    display: inline-block;
+tbody.tablecontroll {
+  overflow-y: scroll;
+  display: inline-block;
 }
 
-thead > tr, tbody > tr, tfoot > tr {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+thead.tablecontroll > tr, tbody.tablecontroll > tr, tfoot.tablecontroll > tr {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
-thead, tfoot {
-    flex-shrink: 0;
+thead.tablecontroll, tfoot.tablecontroll {
+  flex-shrink: 0;
 }
 
-th, tbody td {
-    width: 100%;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
+th.tablecontroll, tbody.tablecontroll td {
+  width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 
-tfoot {
-    display: inline-block;
+tfoot.tablecontroll {
+  display: inline-block;
 }
 
-tfoot td {
-    width: 100%;
-    display: inline-block;
+tfoot.tablecontroll td {
+  width: 100%;
+  display: inline-block;
 }
 
 .searchbox {
@@ -188,9 +173,18 @@ tfoot td {
 }
 
 .st-sort-ascent:before {
-    content: '\25B2';
+  content: '\25B2';
 }
 
 .st-sort-descent:before {
-    content: '\25BC';
+  content: '\25BC';
+}
+
+.calendar {
+  width: 80%;
+  margin: 0 auto;
+}
+.calendar button {
+  color: #e74c3c;
+  line-height: 1em;
 }

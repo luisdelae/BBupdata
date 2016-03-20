@@ -3,27 +3,20 @@
     <md-tab label="Contact Info">
       <div class="contactinfoclass row">
         <div class="row contactInfoIcons">
-          <!-- <div class="two columns"><p></p></div>
-          <div class="two columns"> -->
             <img src="../images/statusicons/standoutfalse.png" ng-if="contact.standout == false || contact.standout == undefined" ng-click="standoutTrue(contact._id)"/>
             <img src="../images/statusicons/standouttrue.png" ng-if="contact.standout == true" ng-click="standoutFalse(contact._id)"/>
-          <!-- </div>
-          <div class="two columns"> -->
+
             <img src="../images/statusicons/convoinitfalse.png" ng-if="contact.convoinit == false || contact.convoinit == undefined" ng-click="convoinitTrue(contact._id)"/>
             <img src="../images/statusicons/convoinittrue.png" ng-if="contact.convoinit == true" ng-click="convoinitFalse(contact._id)"/>
-          <!-- </div>
-          <div class="two columns" > -->
+
             <img src="../images/statusicons/invitefalse.png" ng-if="contact.invite == false || contact.invite == undefined" ng-click="inviteTrue(contact._id)"/>
             <img src="../images/statusicons/invitetrue.png" ng-if="contact.invite == true" ng-click="inviteFalse(contact._id)"/>
-          <!-- </div>
-          <div  class="two columns"> -->
+
             <img src="../images/statusicons/challengerfalse.png" ng-if="contact.challenger == false || contact.challenger == undefined" ng-click="challengerTrue(contact._id)"/>
             <img src="../images/statusicons/challengertrue.png" ng-if="contact.challenger == true" ng-click="challengerFalse(contact._id)"/>
-          <!-- </div>
-          <div class="two columns"> -->
+
             <img src="../images/statusicons/nevercontactfalse.png" ng-if="contact.nevercontact == false || contact.nevercontact == undefined" ng-click="nevercontactTrue(contact._id)"/>
             <img src="../images/statusicons/nevercontacttrue.png" ng-if="contact.nevercontact == true" ng-click="nevercontactFalse(contact._id)"/>
-          <!-- </div> -->
         </div>
         <div class="row moreinfo">
           <form>
@@ -50,22 +43,16 @@
             <md-input-container class="md-block">
               <label for="notes">Notes: </label>
               <textarea id="notes" ng-model="notes"></textarea>
-              <md-button ng-click="editPost()">Save</md-button>
+              <md-button ng-click="editPost($event)">Save</md-button>
               <md-button ng-click="addReminder($event)">Remind</md-button>
             </md-input-container>
-            <!-- <md-input-container>
-              <md-button ng-click="editPost()">Save</md-button>
-              <md-button ng-click="addReminder($event)">Remind</md-button>
-            </md-input-container> -->
           </form>
         </div>
       </div>
     </md-tab>
     <md-tab label="Reminders">
       <div class="contactinfoclass reminders">
-        <!-- <h2>Reminders placeholder</h2> -->
         <h2>Reminders for {{contact.name}}</h2>
-
         <md-list>
           <md-list-item class="md-3-line" ng-repeat="reminders in contactReminders.list">
             <div class="md-list-item-text">
