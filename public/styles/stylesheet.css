@@ -132,13 +132,13 @@ button {
 
 
 /*Test for fixed headers*/
-table {
+table.table{
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    height: 40em; /* this can vary */
+    height: 40em;
 }
 
 table * {
@@ -168,7 +168,7 @@ thead, tfoot {
 }
 
 th, tbody td {
-    width: 100%; /* this can vary */
+    width: 100%;
     overflow-x: hidden;
     text-overflow: ellipsis;
     display: inline-block;

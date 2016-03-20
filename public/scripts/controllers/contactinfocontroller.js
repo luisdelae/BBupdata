@@ -1,12 +1,22 @@
-myApp.controller('ContactInfoController', ['$scope', '$http', 'ContactFactory',
-function($scope, $http, ContactFactory) {
+myApp.controller('ContactInfoController', ['$scope', '$http', '$mdDialog', '$mdMedia', 'ContactFactory',
+  function($scope, $http, $mdDialog, $mdMedia, ContactFactory, AddReminderController) {
 
   $scope.contactFactory = ContactFactory;
   $scope.contact = {};
   $scope.contactReminders;
 
   $scope.addReminder = function(ev) {
-    ContactFactory.factoryCallReminderForm(ev);
+    // ContactFactory.factoryCallReminderForm(ev);
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+
+    $mdDialog.show({
+      templateUrl: '../views/templates/addreminder.html',
+      controller: 'AddReminderController',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen,
+    });
   };
 
   $scope.contactFactory.factoryGetSelectedContact().then(function() {
