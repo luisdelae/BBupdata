@@ -1,5 +1,4 @@
-myApp.factory('ContactFactory', ['$http','$mdDialog', '$mdMedia',
-function($http, $mdDialog, $mdMedia) {
+myApp.factory('ContactFactory', ['$http', function($http) {
 
   var allContacts = {};
   var selectedContactId;
@@ -7,8 +6,6 @@ function($http, $mdDialog, $mdMedia) {
   var currentUserId;
   var currentContactReminders = {};
   var currentUserReminders = {};
-
-  //need to find a way to get the currentUserId out and into the AddReminderController~~~~~~~~~~
 
   var getContactList = function() {
     var promise = $http.get('/contactlist/').then(function(response) {
@@ -47,17 +44,17 @@ function($http, $mdDialog, $mdMedia) {
     return promise;
   };
 
-  var callContactForm = function(ev) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
-
-    $mdDialog.show({
-      templateUrl: '../views/templates/addcontact.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: useFullScreen,
-    });
-  };
+  // var callContactForm = function(ev) {
+  //   var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+  //
+  //   $mdDialog.show({
+  //     templateUrl: '../views/templates/addcontact.html',
+  //     parent: angular.element(document.body),
+  //     targetEvent: ev,
+  //     clickOutsideToClose:true,
+  //     fullscreen: useFullScreen,
+  //   });
+  // };
 
   var callReminderForm = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
@@ -182,9 +179,9 @@ function($http, $mdDialog, $mdMedia) {
     factoryEditContact: function(contact) {
       return editContact(contact);
     },
-    factoryCallContactForm: function(ev) {
-      callContactForm(ev);
-    },
+    // factoryCallContactForm: function(ev) {
+    //   callContactForm(ev);
+    // },
     factoryCallReminderForm: function(ev) {
       callReminderForm(ev);
     },

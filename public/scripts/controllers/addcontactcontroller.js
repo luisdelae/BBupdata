@@ -1,9 +1,7 @@
-myApp.controller('AddContactController', ['$scope', '$http', 'ContactFactory',
-'$mdDialog', '$mdMedia', function($scope, $http, ContactFactory, $mdDialog, $mdMedia) {
+myApp.controller('AddContactController', ['$scope', '$http', '$mdDialog',
+'ContactFactory', function($scope, $http, $mdDialog, ContactFactory) {
 
   $scope.contactFactory = ContactFactory;
-  $scope.status = '  ';
-  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
   $scope.contacts = ContactFactory.allContacts;
 
   var clearForm = function() {

@@ -1,7 +1,9 @@
-myApp.controller('ContactListController', ['$scope', '$http', '$location', '$filter', 'ContactFactory',
-function($scope, $http, $location, filter, ContactFactory) {
+myApp.controller('ContactListController', ['$scope', '$http', '$location',
+'$filter', '$mdDialog', '$mdMedia', 'ContactFactory', function($scope, $http,
+  $location, filter, $mdDialog, $mdMedia, ContactFactory, AddContactController) {
 
   $scope.contactFactory = ContactFactory;
+  $scope.addContactController = AddContactController;
   $scope.contacts = [];
   $scope.displayedCollection = $scope.contacts.list;
 
@@ -9,10 +11,17 @@ function($scope, $http, $location, filter, ContactFactory) {
     $scope.contacts = ContactFactory.allContacts;
   });
 
-  // $scope.contactFactory.factoryGetCurrentUserId();
-
   $scope.addContact = function(ev) {
-    ContactFactory.factoryCallContactForm(ev);
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+
+    $mdDialog.show({
+      templateUrl: '../views/templates/addcontact.html',
+      constroller: 'AddContactController',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen,
+    });
   };
 
   $scope.contactInfo = function(id) {

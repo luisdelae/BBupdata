@@ -1,5 +1,24 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.indexbody {
+  background-image: url(../images/backgrounds/indexbg.jpg);
+  background-repeat:no-repeat;
+  background-size: cover;
+}
+
 h1 {
+  font-size: 5em;
   text-align: center;
+  border-bottom: .15em solid #e74c3c;
+  margin-bottom: 0;
+  /*font-weight: 400;*/
 }
 
 .userNav {
@@ -8,6 +27,10 @@ h1 {
   line-height: 3em;
 }
 
+.navbar {
+  line-height: 0;
+  margin-top: 1em;
+}
 ul {
   text-align: center;
 }
@@ -24,43 +47,62 @@ li {
 
 .table {
   margin: 0 auto;
+  /*height: 500px;*/
+  border: .5em solid #e74c3c;
+  padding: 1em;
 }
 
 .addcontact {
   margin: 1em;
+  /*padding-left: 10em;*/
 }
 
 .contactinfoclass {
   width: 80%;
   margin: auto;
-  border: .5em solid #ccc;
+  border: .5em solid #e74c3c;
   padding: 1em;
 }
 
 label {
   display: inline-block;
-  width: 140px;
+  width: 100px;
   text-align: left;
 }
 
 .moreinfo {
-  padding: 1em;
+  margin: 3em 1em 1em 1em;
 }
-.moreinfo input {
-  width: 75%;
+/*.moreinfo input {
+  width: 100%;
 }
 .moreinfo textarea {
-  width: 75%;
-  max-width: 75%;
-}
+  width: 100%;
+  max-width: 100%;
+}*/
 
 .contactHover:hover {
   cursor: crosshair;
 }
 
+.contactinfoclass {
+  margin-top: 1em;
+}
 td img, .contactinfoclass img {
   height: 3em;
   vertical-align: middle;
+}
+
+td img {
+  margin-left: 1em;
+}
+
+.contactInfoIcons {
+  width: 100%;
+  text-align: center;
+}
+.contactInfoIcons img {
+  margin: 0 2em 0 2em;
 }
 
 .dateDisplay {
@@ -71,11 +113,84 @@ th {
   font-weight: bold;
 }
 
-.authbuttons {
+.authbuttondiv {
   text-align: center;
-  line-height: 20em;
+  line-height: 30em;
+}
+
+.authbuttons {
+  background-color: white;
+}
+
+button {
+  background-color: white;
 }
 
 .reminderComplete {
   background-color: lightgreen;
+}
+
+
+/*Test for fixed headers*/
+table {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 40em; /* this can vary */
+}
+
+table * {
+    box-sizing: inherit;
+    -moz-box-sizing: inherit;
+}
+
+thead {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+tbody {
+    overflow-y: scroll;
+    display: inline-block;
+}
+
+thead > tr, tbody > tr, tfoot > tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+thead, tfoot {
+    flex-shrink: 0;
+}
+
+th, tbody td {
+    width: 100%; /* this can vary */
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+tfoot {
+    display: inline-block;
+}
+
+tfoot td {
+    width: 100%;
+    display: inline-block;
+}
+
+.searchbox {
+  margin-bottom: 0;
+}
+
+.st-sort-ascent:before {
+    content: '\25B2';
+}
+
+.st-sort-descent:before {
+    content: '\25BC';
 }

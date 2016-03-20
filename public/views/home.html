@@ -33,6 +33,7 @@
     <script type="text/javascript" src="/scripts/controllers/contactinfocontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/addremindercontroller.js"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/vendors/reset.css" />
     <link rel="stylesheet" href="/vendors/skeleton.css" />
     <link rel="stylesheet" href="/vendors/angular-material.min.css" />
@@ -40,14 +41,15 @@
 
   </head>
   <body>
+    <div class="content">
     <header class="row headerContainer">
       <div class="four columns">
         <p></p>
       </div>
       <div class="four columns">
-        <h1>BBupdata</h1>
+        <h1>bbUpData</h1>
       </div>
-      <div class="four columns">
+      <div class="two columns">
         <div ng-controller="UserController" ng-cloak="" class="menuBardemoBasicUsage">
           <md-toolbar class="md-menu-toolbar">
             <div layout="row">
@@ -77,11 +79,16 @@
           </md-toolbar>
         </div>
       </div>
+      <div class="two columns">
+        <p>
+
+        </p>
+      </div>
     </header>
 
-    <div class="row" ng-include="'./templates/nav.html'"></div>
+    <div class="row navbar" ng-include="'./templates/nav.html'"></div>
 
     <main ng-view class="row"></main>
-
+  </div>
   </body>
 </html>
