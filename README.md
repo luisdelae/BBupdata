@@ -3,6 +3,7 @@
 http://blooming-beyond-90461.herokuapp.com/
 
 This app is an individual capstone project.
+Time to complete scope and application: 2 weeks.
 
 # Scope of Work Feature Details
 
@@ -10,9 +11,7 @@ This application will serve as a means to organize and stay up-to-date with Beac
 
 The Client will be able to add contacts and update their 5 different statuses: Like/Comment, Started Convo, Invite, Challenger, and Do Not Contact. The Client will also be able to add more information about each contact in each contact’s info page. This information includes Name, Family, Occupation, Goals, Struggles, and Notes. There will be no delete feature for contacts, as requested.
 
-Further, The Client will be able to add reminders for follow-ups for each contact. These reminders will be created as events in The Client’s Google Calendar. Reminders will be sent out on the day the event is due, at 8 AM. If time allows, The Client will be able to modify and delete these events from the contact info page.
-
-The calendar view will be a Google Calendar that shows any upcoming events tagged in The Client’s Google account. If time allows, The Client will be able to add, modify, and delete follow-up reminders from this page.
+Further, The Client will be able to add reminders for follow-ups for each contact. These reminders will be created as events in a calendar. Reminders for each contact should be viewable under their respective infomation page.
 
 # Features
 
