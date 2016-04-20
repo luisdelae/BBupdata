@@ -14,7 +14,7 @@ myApp.controller('AddReminderController', ['$scope', '$http', 'ContactFactory',
   $scope.saveReminder = function() {
 
     var remSubject;
-    if($scope.subject !== undefined){remSubject =  $scope.subject;} else {remSubject = "";}
+    if($scope.subject !== undefined){remSubject =  $scope.subject;} else {remSubject = "No subject";}
 
     var reminder = {
       userId: $scope.contactFactory.factoryCurrentUserId().toString(),
