@@ -1,6 +1,6 @@
 <div class="addReminder" ng-controller="AddReminderController">
   <md-content>
-    <form name="calendarReminder" ng-submit="saveReminder()">
+    <form>
       <md-input-container class="md-block">
         <label for="name">Name: </label>
         <input type="text" name="name" ng-model="name" />
@@ -9,7 +9,7 @@
       <md-input-container class="md-block">
         <label>Subject: </label>
         <textarea name="subject" ng-model="subject"></textarea>
-        <md-button>Set Reminder</md-button>
+        <md-button ng-click="saveReminder()">Set Reminder</md-button>
       </md-input-container>
     </form>
   </md-content>
