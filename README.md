@@ -15,7 +15,7 @@ Further, The Client will be able to add reminders for follow-ups for each contac
 
 # Features
 
-LOG IN SCREEN 
+LOG IN SCREEN
 
 When visiting the site, user will be able to log in using Google Authentication
 
@@ -44,3 +44,11 @@ CALENDAR
 
 Shows all events for the user that is logged in
 Color of event should change depending on whether or not the task has been test to complete
+
+UPDATES AND FIXES
+
+4/19/2016
+- Calendar now includes last names of contacts.
+- Changed "undefined" to "No subject" if user does not input a subject for the reminder.
+- When adding a contact, autofocus is set to the name text box.
+- When adding a contact, can now hit enter to submit the new contact.
