@@ -18,7 +18,7 @@ myApp.controller('AddReminderController', ['$scope', '$http', 'ContactFactory',
       contactId: $scope.contactFactory.factorySelectedContactData()._id.toString(),
       name: $scope.name,
       date: $scope.date,
-      subject: $scope.subject,
+      subject: function () {if($scope.subject !== undefined){return $scope.subject;} else {return "";}},
       status: false
     };
 
