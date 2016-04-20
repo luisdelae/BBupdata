@@ -1,16 +1,16 @@
 <div class="addReminder" ng-controller="AddReminderController">
   <md-content>
-  <form>
-    <md-input-container class="md-block">
-      <label for="name">Name: </label>
-      <input type="text" name="name" ng-model="name" />
-    </md-input-container>
-    <md-datepicker name="date" ng-model="date" md-placeholder="Enter date"></md-datepicker>
-    <md-input-container class="md-block">
-      <label>Subject: </label>
-      <textarea name="subject" ng-model="subject"></textarea>
-      <md-button ng-click="saveReminder()">Set Reminder</md-button>
-    </md-input-container>
-  </form>
-</md-content>
+    <form>
+      <md-input-container class="md-block">
+        <label for="name">Name: </label>
+        <input type="text" name="name" ng-model="name" />
+      </md-input-container>
+      <md-datepicker name="date" ng-model="date" md-placeholder="Enter date"></md-datepicker>
+      <md-input-container class="md-block">
+        <label>Subject: </label>
+        <textarea name="subject" ng-model="subject"></textarea>
+        <md-button ng-click="saveReminder()">Set Reminder</md-button>
+      </md-input-container>
+    </form>
+  </md-content>
 </div>
