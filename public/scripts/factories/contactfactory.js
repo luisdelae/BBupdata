@@ -44,30 +44,6 @@ myApp.factory('ContactFactory', ['$http', function($http) {
     return promise;
   };
 
-  // var callContactForm = function(ev) {
-  //   var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
-  //
-  //   $mdDialog.show({
-  //     templateUrl: '../views/templates/addcontact.html',
-  //     parent: angular.element(document.body),
-  //     targetEvent: ev,
-  //     clickOutsideToClose:true,
-  //     fullscreen: useFullScreen,
-  //   });
-  // };
-
-  // var callReminderForm = function(ev) {
-  //   var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
-  //
-  //   $mdDialog.show({
-  //     templateUrl: '../views/templates/addreminder.html',
-  //     parent: angular.element(document.body),
-  //     targetEvent: ev,
-  //     clickOutsideToClose:true,
-  //     fullscreen: useFullScreen,
-  //   });
-  // };
-
   var getSelectedContact = function() {
     var promise = $http.get('/contactlist/selectedContactId/' + currentUserId + '/' + selectedContactId).then(function(response){
       // selectedContactData = response.data;
@@ -172,7 +148,7 @@ myApp.factory('ContactFactory', ['$http', function($http) {
     factoryGetSelectedContactData: function() {
       return selectedContactData;
     },
-    getContactId: function(id){
+    getContactId: function(id) {
       selectedContactId = id;
       return selectedContactId;
     },

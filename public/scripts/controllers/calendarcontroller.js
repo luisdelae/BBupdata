@@ -1,23 +1,19 @@
-myApp.controller('CalendarController', ['$scope', '$http', 'ContactFactory',
-  function($scope, $http, ContactFactory) {
-
-    $scope.contactFactory = ContactFactory;
-
+myApp.controller('CalendarController', ['$scope', '$http', '$location', 'ContactFactory',
+  function($scope, $http, $location, ContactFactory) {
 
     $scope.uiConfig = {
       calendar:{
-        height: 450,
+        height: 500,
         timezone: 'currentTimezone',
         editable: true,
         header:{
-          left: 'month basicWeek basicDay agendaWeek agendaDay',
+          left: 'month basicWeek basicDay',
           center: 'title',
           right: 'today prev,next'
         },
-        dayClick: $scope.alertEventOnClick,
-        eventDrop: $scope.alertOnDrop,
-        eventResize: $scope.alertOnResize
-      }
+        eventClick: eventClick,
+        eventStartEditable: false
+      },
     };
     $scope.events = [];
 
@@ -27,12 +23,11 @@ myApp.controller('CalendarController', ['$scope', '$http', 'ContactFactory',
       }
     };
 
-    $scope.contactFactory.factoryGetUserReminders().then(function() {
-      $scope.userReminders = $scope.contactFactory.currentUserReminders.list;
-      console.log('userReminders from controller: ', $scope.userReminders);
+    ContactFactory.factoryGetUserReminders().then(function() {
+      $scope.userReminders = ContactFactory.currentUserReminders.list;
       //return an object with an array of objects
       for(var i = 0; i < $scope.userReminders.length; i++) {
-        $scope.events.push({title: $scope.userReminders[i].name +
+        $scope.events.push({contactId: $scope.userReminders[i].contactId, title: $scope.userReminders[i].name +
         ': \n' + $scope.userReminders[i].subject, start: moment.tz($scope.userReminders[i].date,
           moment.tz.guess()), stick: true, backgroundColor: changeBgColor(i)});
       }
@@ -45,5 +40,9 @@ myApp.controller('CalendarController', ['$scope', '$http', 'ContactFactory',
 
     $scope.eventSources = [$scope.events];
 
+    function eventClick(event) {
+      ContactFactory.getContactId(event.contactId);
+      $location.path('contactinfo');
+    }
 
 }]);

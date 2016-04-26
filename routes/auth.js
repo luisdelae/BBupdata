@@ -24,8 +24,9 @@ module.exports = function(app, passport) {
       // console.log(user, ' has been successfully logged out.');
       // res.redirect('/');
       req.logout();
-      res.redirect('https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue=http://blooming-beyond-90461.herokuapp.com');
-      //blooming-beyond-90461.herokuapp.com
+      // res.redirect('https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue=http://blooming-beyond-90461.herokuapp.com');
+      res.redirect('https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000');
+
     });
     // req.session.destroy();
 
