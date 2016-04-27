@@ -93,6 +93,26 @@ myApp.controller('ContactListController', ['$scope', '$http', '$location',
     });
   };
 
+//-
+
+  $scope.pendingTrue = function(id) {
+    $scope.contactFactory.factoryPendingTrue(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = ContactFactory.allContacts;
+      });
+    });
+  };
+
+  $scope.pendingFalse = function(id) {
+    $scope.contactFactory.factoryPendingFalse(id).then(function() {
+      $scope.contactFactory.factoryGetContactList().then(function() {
+        $scope.contacts = ContactFactory.allContacts;
+      });
+    });
+  };
+
+//-
+
   $scope.nevercontactTrue = function(id) {
     $scope.contactFactory.factoryNevercontactTrue(id).then(function() {
       $scope.contactFactory.factoryGetContactList().then(function() {

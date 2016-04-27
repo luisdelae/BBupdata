@@ -277,6 +277,36 @@ module.exports = function(app, passport) {
     );
   });
 
+  app.put('/contactlist/pendingtrue/:id', function(req, res) {
+    User.update(
+      {'contactInfo._id': req.params.id},
+      {
+        $set: {'contactInfo.$.pending': true}
+      },
+      function(err, data) {
+        if (err) {
+          console.log('ERROR:', err);
+        }
+        res.send(data);
+      }
+    );
+  });
+
+  app.put('/contactlist/pendingfalse/:id', function(req, res) {
+    User.update(
+      {'contactInfo._id': req.params.id},
+      {
+        $set: {'contactInfo.$.pending': false}
+      },
+      function(err, data) {
+        if (err) {
+          console.log('ERROR:', err);
+        }
+        res.send(data);
+      }
+    );
+  });
+
   app.put('/contactlist/nevercontacttrue/:id', function(req, res) {
     User.update(
       {'contactInfo._id': req.params.id},

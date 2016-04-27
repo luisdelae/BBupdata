@@ -10,6 +10,7 @@ myApp.controller('AddContactController', ['$scope', '$http', '$mdDialog',
     $scope.convoinit = false;
     $scope.invite = false;
     $scope.challenger = false;
+    $scope.pending = false;
     $scope.nevercontact = false;
   };
 
@@ -23,6 +24,7 @@ myApp.controller('AddContactController', ['$scope', '$http', '$mdDialog',
       convoinit: $scope.convoinit,
       invite: $scope.invite,
       challenger: $scope.challenger,
+      pending: $scope.pending,
       nevercontact: $scope.nevercontact
     };
 

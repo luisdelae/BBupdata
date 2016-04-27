@@ -15,6 +15,9 @@
             <img src="../images/statusicons/challengerfalse.png" ng-if="contact.challenger == false || contact.challenger == undefined" ng-click="challengerTrue(contact._id)"/>
             <img src="../images/statusicons/challengertrue.png" ng-if="contact.challenger == true" ng-click="challengerFalse(contact._id)"/>
 
+            <img src="../images/statusicons/pendingfalse.png" ng-if="contact.pending == false || contact.pending == undefined" ng-click="pendingTrue(contact._id)"/>
+            <img src="../images/statusicons/pendingtrue.png" ng-if="contact.pending == true" ng-click="pendingFalse(contact._id)"/>
+
             <img src="../images/statusicons/nevercontactfalse.png" ng-if="contact.nevercontact == false || contact.nevercontact == undefined" ng-click="nevercontactTrue(contact._id)"/>
             <img src="../images/statusicons/nevercontacttrue.png" ng-if="contact.nevercontact == true" ng-click="nevercontactFalse(contact._id)"/>
         </div>

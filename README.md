@@ -57,3 +57,7 @@ UPDATES AND FIXES
 - When adding contact, also able to click to submit new contact
 - Able to change between day, week, month views in calendar
 - In calendar, able to click event and it will take user to client info page
+
+4/26/2016
+- Added new status of PENDING. This status can be used when waiting on client for future date or response.
+- Removed some unnecessary code in preparation for future code clean up.

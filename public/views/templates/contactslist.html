@@ -22,6 +22,7 @@
             <th class="tablecontroll" st-sort="convoinit">Start Convo</th>
             <th class="tablecontroll" st-sort="invite">Invite!</th>
             <th class="tablecontroll" st-sort="challenger">Challenger</th>
+            <th class="tablecontroll" st-sort="challenger">Pending</th>
             <th class="tablecontroll" st-sort="nevercontact">Never Contact</th>
             <th st-sort-default="reverse" st-sort="dateadded" class="tablecontroll">Date Added</th>
           </tr>
@@ -48,6 +49,10 @@
             <td>
               <img src="../images/statusicons/challengerfalse.png" ng-if="contact.challenger == false || contact.challenger == undefined" ng-click="challengerTrue(contact._id)"/>
               <img src="../images/statusicons/challengertrue.png" ng-if="contact.challenger == true" ng-click="challengerFalse(contact._id)"/>
+            </td>
+            <td>
+              <img src="../images/statusicons/pendingfalse.png" ng-if="contact.pending == false || contact.pending == undefined" ng-click="pendingTrue(contact._id)"/>
+              <img src="../images/statusicons/pendingtrue.png" ng-if="contact.pending == true" ng-click="pendingFalse(contact._id)"/>
             </td>
             <td>
               <img src="../images/statusicons/nevercontactfalse.png" ng-if="contact.nevercontact == false || contact.nevercontact == undefined" ng-click="nevercontactTrue(contact._id)"/>

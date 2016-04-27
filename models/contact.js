@@ -11,13 +11,13 @@ var ContactSchema =
     "convoinit": Boolean,
     "invite": Boolean,
     "challenger": Boolean,
+    "pending": Boolean,
     "nevercontact": Boolean,
     "occupation": String,
     "family": String,
     "goals": String,
     "struggles": String,
     "notes": String
-    // reminders: [ReminderSchema]
   },
   {
     collection: 'contacts'

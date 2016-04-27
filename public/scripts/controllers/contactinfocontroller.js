@@ -34,6 +34,7 @@ myApp.controller('ContactInfoController', ['$scope', '$http', '$mdDialog', '$mdM
     $scope.convoinit = $scope.contact.convoinit;
     $scope.invite = $scope.contact.invite;
     $scope.challenger = $scope.contact.challenger;
+    $scope.pending = $scope.contact.pending;
     $scope.nevercontact = $scope.contact.nevercontact;
     $scope.name = $scope.contact.name;
     $scope.occupation = $scope.contact.occupation;
@@ -131,6 +132,22 @@ myApp.controller('ContactInfoController', ['$scope', '$http', '$mdDialog', '$mdM
 
   $scope.challengerFalse = function(id) {
     $scope.contactFactory.factoryChallengerFalse(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.pendingTrue = function(id) {
+    $scope.contactFactory.factoryPendingTrue(id).then(function() {
+      $scope.contactFactory.factoryGetSelectedContact().then(function() {
+        $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
+      });
+    });
+  };
+
+  $scope.pendingFalse = function(id) {
+    $scope.contactFactory.factoryPendingFalse(id).then(function() {
       $scope.contactFactory.factoryGetSelectedContact().then(function() {
         $scope.contact = $scope.contactFactory.factoryGetSelectedContactData();
       });

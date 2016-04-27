@@ -101,6 +101,16 @@ myApp.factory('ContactFactory', ['$http', function($http) {
     return promise;
   };
 
+  var pendingTrue = function(id) {
+    var promise = $http.put('/contactlist/pendingtrue/' + id).then(function(response) {});
+    return promise;
+  };
+
+  var pendingFalse = function(id) {
+    var promise = $http.put('/contactlist/pendingfalse/' + id).then(function(response) {});
+    return promise;
+  };
+
   var nevercontactTrue = function(id) {
     var promise = $http.put('/contactlist/nevercontacttrue/' + id).then(function(response) {});
     return promise;
@@ -155,9 +165,6 @@ myApp.factory('ContactFactory', ['$http', function($http) {
     factoryEditContact: function(contact) {
       return editContact(contact);
     },
-    // factoryCallContactForm: function(ev) {
-    //   callContactForm(ev);
-    // },
     factoryCallReminderForm: function(ev) {
       callReminderForm(ev);
     },
@@ -184,6 +191,12 @@ myApp.factory('ContactFactory', ['$http', function($http) {
     },
     factoryChallengerFalse: function(id) {
       return challengerFalse(id);
+    },
+    factoryPendingTrue: function(id) {
+      return pendingTrue(id);
+    },
+    factoryPendingFalse: function(id) {
+      return pendingFalse(id);
     },
     factoryNevercontactTrue: function(id) {
       return nevercontactTrue(id);
