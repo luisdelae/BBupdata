@@ -59,7 +59,7 @@
         <md-list>
           <md-list-item class="md-3-line" ng-repeat="reminders in contactReminders.list">
             <div class="md-list-item-text">
-              <h3>{{reminders.subject}}</h3>
+              <h3><img src="../images/icons/delete.png" /><img src="../images/icons/edit.png" />{{reminders.subject}}</h3>
               <h4>{{reminders.date | date : format : fullDate}}</h4>
             </div>
             <md-button class="md-secondary" ng-click="setComplete(reminders._id)" ng-if="reminders.status == false || reminders.status == undefined">Complete</md-button>
