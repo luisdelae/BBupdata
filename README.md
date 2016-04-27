@@ -52,3 +52,8 @@ UPDATES AND FIXES
 - Changed "undefined" to "No subject" if user does not input a subject for the reminder.
 - When adding a contact, autofocus is set to the name text box.
 - When adding a contact, can now hit enter to submit the new contact.
+
+4/25/2016
+- When adding contact, also able to click to submit new contact
+- Able to change between day, week, month views in calendar
+- In calendar, able to click event and it will take user to client info page
