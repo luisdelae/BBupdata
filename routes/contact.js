@@ -368,4 +368,17 @@ module.exports = function(app, passport) {
       }
     );
   });
+
+  app.delete('/contactlist/deletereminder/:id', function(req, res) {
+    console.log('id to delete: ', req.params.id);
+    Reminder.remove(
+      {'_id': req.params.id},
+      function(err, data) {
+        if (err) {
+          console.log('ERROR:', err);
+        }
+        res.send(data);
+      }
+    );
+  });
 };

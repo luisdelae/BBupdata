@@ -67,3 +67,4 @@ UPDATES AND FIXES
 - Changed "Date Added" to "Added".
 - Changed date format for Added column to MM/dd/yy
 - Added form validation for adding new contact. Button is disabled until at least 2 characters are inputted in the text box.
+- Added feature to remove a reminder from a contact, as a trash can icon, with confirmation.

@@ -78,12 +78,10 @@ label {
 .contactinfoclass {
   margin-top: 1em;
 }
-td img, .contactinfoclass img {
-  height: 3em;
-  vertical-align: middle;
-}
 
 td img {
+  height: 3em;
+  vertical-align: middle;
   margin-left: 1em;
 }
 
@@ -92,6 +90,8 @@ td img {
   text-align: center;
 }
 .contactInfoIcons img {
+  height: 3em;
+  vertical-align: middle;
   margin: 0 2em 0 2em;
 }
 
@@ -187,4 +187,12 @@ tfoot.tablecontroll td {
 .calendar button {
   color: #e74c3c;
   line-height: 1em;
+}
+
+.remindIcon {
+  margin: 1.2em 1em 0 0;
+}
+
+img {
+  cursor: pointer;
 }

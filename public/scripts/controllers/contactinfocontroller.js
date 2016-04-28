@@ -186,4 +186,24 @@ myApp.controller('ContactInfoController', ['$scope', '$http', '$mdDialog', '$mdM
     });
   };
 
+  $scope.deleteReminder = function(id, ev) {
+
+    var confirm = $mdDialog.confirm()
+      .clickOutsideToClose(true)
+      .title('Delete Reminder')
+      .textContent('Are you sure you want to delete this reminder?')
+      .ariaLabel('Delete Reminder')
+      .ok('OK')
+      .cancel('Cancel')
+      .targetEvent(ev);
+
+      $mdDialog.show(confirm).then(function() {
+        $scope.contactFactory.factoryDeleteReminder(id).then(function() {
+          $scope.contactFactory.factoryGetContactReminders().then(function() {
+            $scope.contactReminders = ContactFactory.currentContactReminders;
+          });
+        });
+      });
+  };
+
 }]);

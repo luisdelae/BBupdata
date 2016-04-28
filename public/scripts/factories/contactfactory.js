@@ -131,6 +131,12 @@ myApp.factory('ContactFactory', ['$http', function($http) {
     return promise;
   };
 
+  var deleteReminder = function(id) {
+    var promise = $http.delete('/contactlist/deletereminder/' + id).then(function(response){});
+    console.log(currentContactReminders);
+    return promise;
+  };
+
   var publicFunctions = {
     factoryContactList: function() {
       return allContacts.list;
@@ -212,6 +218,9 @@ myApp.factory('ContactFactory', ['$http', function($http) {
     },
     factoryReminderIncomplete: function(id) {
       return reminderStatusFalse(id);
+    },
+    factoryDeleteReminder: function(id) {
+      return deleteReminder(id);
     },
     factoryGetUserReminders: function() {
       return getUserReminders();
