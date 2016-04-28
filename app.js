@@ -13,8 +13,8 @@ require('./config/passport')(passport); // pass passport for configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect('mongodb://luisdelae:security36@ds037145.mlab.com:37145/bbupdata');
-// mongoose.connect('mongodb://localhost/bbupdata'); //should put connectionString in here instead of the actual link. Require the route in the page.
+// mongoose.connect('mongodb://luisdelae:security36@ds037145.mlab.com:37145/bbupdata');
+mongoose.connect('mongodb://localhost/bbupdata'); //should put connectionString in here instead of the actual link. Require the route in the page.
 
 app.get('https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyCFvSdVmtOo90Ix46P280K_n7zr5iyh6ZM', function(req, res) {
   console.log('calendar event list: ', res);
