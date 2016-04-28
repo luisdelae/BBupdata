@@ -61,3 +61,9 @@ UPDATES AND FIXES
 4/26/2016
 - Added new status of PENDING. This status can be used when waiting on client for future date or response.
 - Removed some unnecessary code in preparation for future code clean up.
+
+4/27/2016
+- Changed "Never Contact" to "Discontinue".
+- Changed "Date Added" to "Added".
+- Changed date format for Added column to MM/dd/yy
+- Added form validation for adding new contact. Button is disabled until at least 2 characters are inputted in the text box.

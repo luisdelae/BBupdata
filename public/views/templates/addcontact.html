@@ -3,7 +3,7 @@
     <md-input-container>
       <label for="name">Name</label>
       <input type="text" ng-model="name" id="name" required minlength="2" md-autofocus/>
-      <md-button type="submit">Add Contact</md-button>
+      <md-button ng-disabled="addNewContact.$invalid" type="submit">Add Contact</md-button>
     </md-input-container>
   </form>
 </div>

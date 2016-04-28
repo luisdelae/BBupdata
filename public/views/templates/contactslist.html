@@ -23,8 +23,8 @@
             <th class="tablecontroll" st-sort="invite">Invite!</th>
             <th class="tablecontroll" st-sort="challenger">Challenger</th>
             <th class="tablecontroll" st-sort="challenger">Pending</th>
-            <th class="tablecontroll" st-sort="nevercontact">Never Contact</th>
-            <th st-sort-default="reverse" st-sort="dateadded" class="tablecontroll">Date Added</th>
+            <th class="tablecontroll" st-sort="nevercontact">Discontinue</th>
+            <th st-sort-default="reverse" st-sort="dateadded" class="tablecontroll">Added</th>
           </tr>
         </thead>
         <tbody class="tablecontroll">
@@ -59,7 +59,7 @@
               <img src="../images/statusicons/nevercontacttrue.png" ng-if="contact.nevercontact == true" ng-click="nevercontactFalse(contact._id)"/>
             </td>
             <td class="dateDisplay">
-              {{contact.dateadded | date : format : fullDate}}
+              {{contact.dateadded | date : 'MM/dd/yy'}}
             </td>
           </tr>
         </tbody>
